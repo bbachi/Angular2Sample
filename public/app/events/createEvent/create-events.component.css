@@ -1,0 +1,23 @@
+#createanevent h1{
+    text-align: center;
+    color: #ffffff;
+    margin-bottom:3%;
+}
+
+#createanevent label{
+    color: #ffffff;
+}
+
+.crtevntsubmitbtn{
+    margin-top:2%;
+    margin-bottom:2%;
+    text-align: center;
+}
+
+.error{
+    background-color: #E05C65 !important;
+}
+
+.form-control.focus{
+    background-color: #ffffff;
+}

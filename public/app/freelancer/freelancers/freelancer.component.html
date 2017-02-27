@@ -1,0 +1,78 @@
+<div>
+
+    <div class="topimagecls">
+        <img src="app/assets/images/special/attendees.jpg" alt="" class="left halfwidth imagehgt" />
+        <img src="app/assets/images/events/network_events.jpeg" alt="" class="right halfwidth imagehgt" />
+        <div class="event-title">
+            <h1>Play, Promote & Pay the easier way!</h1>
+            <a href="#">
+                <h3 class="title">Learn More</h3>
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="container-fluid">
+        
+        <form class="" action="index.html" method="post">
+            <div class="search-freelancers">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Search for events" aria-describedby="basic-addon1">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" #searchCity id="exampleSelect1">
+                        <option value="CHI">Chicago</option>
+                        <option value="NY">New York</option>
+                        <option value="LV">Las Vegas</option>
+                        <option value="SD">San Diego</option>
+                        <option value="LA"selected>Los Angeles</option>
+                        <option value="SFO">San Francisco</option>
+                        <option value="BOS">Boston</option>
+                        <option value="MI">Miami</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="exampleSelect1">
+                        <option selected>Search Dates</option>
+                        <option>JAN</option>
+                        <option>FEB</option>
+                        <option>MAR</option>
+                        <option>APR</option>
+                        <option>MAY</option>
+                        <option>JUN</option>
+                        <option>JUL</option>
+                        <option>AUG</option>
+                        <option>SEP</option>
+                        <option>OCT</option>
+                        <option>NOV</option>
+                        <option>DEC</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" (click)="searchFreelancers(searchCity)" class="btn btn-primary">SEARCH</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="popularparahlinkid">
+            <p class="blackclr left pflmargin">Popular Freelancers in <a href="#">Los Angeles, CA</a></p>
+        </div>
+
+        
+        <div  class="popular-freelancers clear" style="color: grey;">
+            <div class="row" *ngFor="let item of freelancersByCity">
+                <div class="col-md-1">
+                    <p>{{item.kind}}</p>
+                </div>
+                <div *ngFor="let f of item.freelancers" class="col-md-1">
+                    <img (click)="goToFreelancerProfile()" src="http://res.freestockphotos.biz/pictures/14/14114-a-beautiful-young-business-woman-posing-on-a-white-background-pv.jpg" alt="" class="freelancerimg" />
+                </div>
+                <div id="seaalllink" class="col-md-1">
+                    <p>See All ></p>
+                </div>
+                <div class="clear hr"></div>
+            </div>
+           
+        </div>
+        
+    </div>
+</div>

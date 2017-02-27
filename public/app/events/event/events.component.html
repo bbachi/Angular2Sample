@@ -1,0 +1,76 @@
+<div id="" class="image-bg">
+
+    <div class="eventsHeader" style="background-color: black;">
+        <img src="app/assets/images/events/header_events.jpeg" alt="" style="width: 65vw; height: auto;" />
+        <div class="event-title">
+            <h1>Play, Promote & Pay the easier way!</h1>
+            <a href="#">
+                <h3 class="title">Learn More</h3>
+            </a>
+        </div>
+    </div>
+
+    <sebm-google-map [latitude]="lat" [longitude]="lng">
+        <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+    </sebm-google-map>
+
+    <div class="container-fluid">
+        
+        <div class="row" style="margin-top: 20px; margin-bottom: 50px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="input-group">
+                    <input type="text" id="autocompleteInput" #searchTerm class="form-control"  placeholder="Search events in your area" style="text-align: center">
+                    <span class="input-group-btn">
+	        	<button class="btn btn-default" (click)="searchEventsInYourArea(searchTerm)" type="button">Go!</button>
+	      		</span>
+                </div>
+                <!-- /input-group -->
+            </div>
+            <!-- /.col-lg-6 -->
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Popular in your area" style="text-align: center">
+                    <span class="input-group-btn">
+	        	        <button class="btn btn-default" type="button">Go!</button>
+	      		    </span>
+                </div>
+                <!-- /input-group -->
+            </div>
+            <!-- /.col-lg-6 -->
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="input-group col-sm-10">
+                    <my-date-picker name="mydate" #searchDate [(ngModel)]="todaysDate" (ngModelChange)="searchEventsByDate($event)" [options]="myDatePickerOptions"></my-date-picker>
+                    <!-- <span class="input-group-btn">
+	        	        <button class="btn btn-default" type="button">Go!</button>
+	      		    </span> -->
+                </div>
+                <!-- /input-group -->
+            </div>
+            <!-- /.col-lg-6 -->
+        </div>
+        <!-- /.row -->
+
+        <!-- Events -->
+        <div *ngFor="let item of events" id="eventgrid">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 event-img">
+                <img src="app/assets/images/events/magic.jpg" (click) = "eventDetail(item.eventId)" alt="" class="locationstyle"/>
+                <p class="event-name">{{item.title}}</p>
+                <a href="http://maps.google.com/?q={{item.address.streetNumber}} {{item.address.streetName}}, {{item.address.city}} {{item.address.state}} {{item.address.zipcode}}">
+                    <p class="location">{{item.address.streetNumber}} {{item.address.streetName}}, {{item.address.city}} {{item.address.state}} {{item.address.zipcode}} </p>
+                </a>
+                <p><b>Venue:</b>{{item.venue}}</p>
+                <p><b>Hosted by:</b>{{item.host}}</p>
+                <p><b>When:</b>{{item.time}} PM</p>
+                <p><b>Type:</b> {{item.type}}</p>
+                <p><b>Phone:</b> {{item.phone}}</p>
+                <a href="mailto:{{item.email}}"><p><b>Email:</b>{{item.email}}</p></a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+</script>

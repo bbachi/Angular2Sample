@@ -1,0 +1,33 @@
+<div id="o-wrapper" class="o-wrapper"> <!--has-slide-left -->
+    <button id="menubutton c-button--slide-left" (click)="toggleMenu()" class="c-button"><img src="app/assets/images/logo.png" class="c-button-img">MENU</button>
+    <div class="rightlogin">
+        <a *ngIf="!userLoggedIn" [routerLink]="['/login']">LOG IN</a>
+        <a *ngIf="!userLoggedIn" [routerLink]="['/signup']">SIGN UP</a>
+        <a *ngIf="userLoggedIn" (click)="logout()">LOG OUT</a>
+    </div>
+</div>
+
+<nav id="c-menu--slide-left" class="c-menu c-menu--slide-left" [ngClass]="{'is-active': showNav }">
+<div class="close-login">
+    <button (click)="toggleMenu()" class="c-menu_close">&#10005;</button>
+    <a [routerLink]="['/login']" (click)="toggleMenu()" class="nav-login">LOG IN</a>
+</div>
+<div class="nav-signup-div">
+    <a [routerLink]="['/signup']" (click)="toggleMenu()" class="nav-signup">SIGN UP</a>
+</div>
+<ul class="c-menu__items">
+    <li (click)="toggleMenu()" class="c-menu__item nav-border-top"><a [routerLink]="['/home']" class="c-menu__link">HOME</a></li>
+    <li (click)="toggleMenu()" class="c-menu__item"><a [routerLink]="['/about']" class="c-menu__link">ABOUT US</a></li>
+    <li (click)="toggleMenu()" class="c-menu__item"><a [routerLink]="['/event']" class="c-menu__link">EVENTS</a></li>
+    <li (click)="toggleMenu()" class="c-menu__item"><a [routerLink]="['/createanevent']" class="c-menu__link">CREATE AN EVENT</a></li>
+    <li (click)="toggleMenu()" class="c-menu__item"><a [routerLink]="['/freelancer']" class="c-menu__link">FREELANCERS</a></li>
+    <li (click)="toggleMenu()" class="c-menu__item"><a [routerLink]="['/createfreelancer']" class="c-menu__link">BE A FREELANCER</a></li>
+    <li (click)="toggleMenu()" class="c-menu__item nav-border-bottom"><a [routerLink]="['/settings']" class="c-menu__link">SETTINGS</a></li>
+</ul>
+<div class="nav-image">
+    <img src="app/assets/images/RC_Topbanner.png">
+</div>
+</nav>
+
+<div id="c-mask" class="c-mask" [ngClass]="{'is-active': showNav }"></div>
+

@@ -1,0 +1,35 @@
+em{
+    color: #E05C65;
+    padding-left: 10px;
+}
+
+.error{
+    background-color: #E05C65 !important;
+}
+
+.noerror{
+    background-color: #bbb;
+}
+
+body{
+    background-color: #17B2EF;
+}
+
+.errorMsg{
+    color:red;
+    margin-right:15%;
+    margin-top:2%;
+}
+
+.become-login {
+  color: #fff;
+  text-align: center;
+}
+
+.login-body{
+    height:100%;
+}
+
+.forgot-pw-wrap a{
+    text-decoration: none;
+}

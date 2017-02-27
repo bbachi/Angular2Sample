@@ -1,0 +1,60 @@
+.clear{
+    clear:both;
+}
+
+.left{
+    float:left;
+}
+
+.right{
+    float:right;
+}
+
+.halfwidth{
+    width:50%;
+}
+
+.imagehgt{
+    height:600px;
+}
+
+.blackclr{
+    color: black; 
+}
+
+.pflmargin{
+    margin: 10px 0px 10px 30px; 
+}
+
+p.pflmargin a{
+    color: #17B2EF; 
+    text-decoration: underline;
+}
+
+#popularparahlinkid{
+    margin-bottom: 3%;
+}
+
+.hr{
+    margin-top: 6%; 
+    margin-bottom: 0.5em; 
+    margin-left: 10%; 
+    margin-right: 7%; 
+    border-style: inset; 
+    border-width: 1px;
+}
+
+.freelancerimg{
+    border-radius: 50%; 
+    border: 3px solid #17B2EF; 
+    height: 100px; 
+    width: 100px;
+}
+
+#seaalllink p{
+    margin-top:30%;
+}
+
+.popular-freelancers img{
+    cursor: pointer;
+}

@@ -1,0 +1,29 @@
+<div class="container-fluid sitebgcolor">
+    <div class="login-form-wrap">
+    <div class="login-wrap">
+        <div class="login-form">
+            <form #f="ngForm" autocomplete="off" (ngSubmit)="login(f.value)" novalidate>
+                <div class="login-form">
+                    <h2>Log into RaveCrate</h2>
+                    <span *ngIf="!isUserValid" class="errorMsg">Please enter valid credentials.</span>
+                    <div class="form-group">
+                        <input [ngClass]= "{'error': !isUserValid, 'noerror': isUserValid}" type="text" (ngModel)="email" name="email" placeholder="Email" required id="email" class="login-input">
+                    </div>
+                    <div class="form-group">
+                        <input [ngClass]= "{'error': !isUserValid, 'noerror': isUserValid}" type="password" (ngModel)="password" name="password" placeholder="Password"  required id="password" class="login-input">
+                    </div>
+                    <button type="submit" id="login" [disabled]="f.invalid" name="button">Log In</button>
+                    <div class="login-checkbox">
+                        <input type="checkbox" name="checkbox" class="checkbox"><label> Keep me logged in</label>
+                    </div>
+                    <div class="forgot-pw-wrap">
+                        <a href="#" (click)="forgotYourPassword($event)" class="forgot-pw">Forgot your password?</a>
+                        <a href="#" (click)="signUpToday($event)" class="forgot-pw">Sign Up Today!</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<h1 class="become-login">Become an event planner or freelancer today!</h1>
+</div>

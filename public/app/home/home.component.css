@@ -1,0 +1,12 @@
+.clear{
+    clear:both;
+}
+
+.carosaulimg{
+    height: 87vh;
+    width: 100%;
+}
+
+.error{
+    background-color: #E05C65;
+}
