@@ -1,0 +1,1 @@
+export { ComingsoonComponent } from './comingsoon.component';
