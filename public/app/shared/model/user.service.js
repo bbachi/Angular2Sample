@@ -34,7 +34,7 @@ var UserService = (function () {
         return this.http.post(this.loginURL, JSON.stringify(body), options)
             .map(function (response) { return response.json(); })
             .do(function (data) {
-            console.log('login Response' + JSON.stringify(data));
+            console.log('validate user Response' + JSON.stringify(data));
             if (null != data && data.userValidated === 'Y') {
                 _this.userLoggedIn.next(true);
                 console.log('userlogged in vlaue in service:::::' + _this.userLoggedIn);
@@ -45,7 +45,7 @@ var UserService = (function () {
     UserService.prototype.signUpUser = function (user) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        var body = { user: user };
+        var body = { requestObj: user };
         return this.http.post(this.signUpURL, JSON.stringify(body), options)
             .map(function (response) { return response.json(); })
             .do(function (data) { return console.log('All:  ' + JSON.stringify(data)); })

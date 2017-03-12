@@ -19,7 +19,8 @@ var EventService = (function () {
     function EventService(http) {
         this.http = http;
         this.eventsURL = '/resource/getEvents';
-        this.saveEventURL = '/resource/saveevent';
+        this.saveEventURL = '/resource/saveEvent';
+        this.getEventDtlsURL = '/resource/getEventDtls';
     }
     EventService.prototype.getEvents = function (address, eventDate, searchItem) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });

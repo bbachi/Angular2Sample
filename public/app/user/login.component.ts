@@ -22,7 +22,7 @@ export class LoginComponent {
     login(formValues: any) {
         console.log(formValues);
         this.userService.validateUser(formValues.email, formValues.password).subscribe((user: any) => {
-            console.log('user from the service:::::::' + user);
+            console.log('user from the service:::::::' + JSON.stringify(user));
             if (null != user && user.userValidated === 'Y') {
                 this.isUserValid = true;
                 this.router.navigate(['event']);

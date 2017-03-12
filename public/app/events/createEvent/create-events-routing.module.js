@@ -23,4 +23,4 @@ CreateEventRoutingModule = __decorate([
     })
 ], CreateEventRoutingModule);
 exports.CreateEventRoutingModule = CreateEventRoutingModule;
-//# sourceMappingURL=create-event-routing.module.js.map
+//# sourceMappingURL=create-events-routing.module.js.map

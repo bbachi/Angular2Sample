@@ -11,7 +11,8 @@ import 'rxjs/add/operator/catch';
 export class EventService {
 
     private eventsURL = '/resource/getEvents';
-    private saveEventURL = '/resource/saveevent';
+    private saveEventURL = '/resource/saveEvent';
+    private getEventDtlsURL = '/resource/getEventDtls';
 
     constructor(private http: Http) { }
 

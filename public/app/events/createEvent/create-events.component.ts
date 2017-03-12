@@ -5,6 +5,7 @@ import { Event } from '../shared/event.model';
 import { IMyOptions } from 'mydatepicker';
 import { EventService } from '../shared/event.servcie';
 import { Address } from '../shared/address.model';
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
     selector: 'rc-createevents',
@@ -19,6 +20,8 @@ export class CreateEventsComponent implements OnInit {
     todaysDate: Object = { date: { month: (new Date().getMonth() + 1), day: new Date().getDay(), year: new Date().getFullYear() } };
 
     constructor(private eventService: EventService, private router: Router) { }
+
+    public uploader:FileUploader = new FileUploader({url:'/resource/uploadEventImg'});
 
     createAnEvent(formValues: any) {
         console.log(formValues);
@@ -42,6 +45,7 @@ export class CreateEventsComponent implements OnInit {
                 }
             });
         }else{
+            console.log('event form invalid');
             this.isFormValid = true;
         }
     }

@@ -27,7 +27,7 @@ export class UserService {
         return this.http.post(this.loginURL, JSON.stringify(body), options)
             .map((response: Response) => <any> response.json())
             .do(data => {
-                console.log('login Response' + JSON.stringify(data));
+                console.log('validate user Response' + JSON.stringify(data));
                 if ( null != data && data.userValidated === 'Y' ){
                     this.userLoggedIn.next(true);
                     console.log('userlogged in vlaue in service:::::' + this.userLoggedIn);
@@ -36,12 +36,12 @@ export class UserService {
             .catch(this.handleError);
     }
 
-    signUpUser(user: User): Observable<User> {
+    signUpUser(user: User): Observable<any> {
         let headers = new Headers({'Content-Type' : 'application/json'});
         let options = new RequestOptions({headers: headers});
-        let body = {user: user};
+        let body = {requestObj: user};
         return this.http.post(this.signUpURL, JSON.stringify(body), options)
-            .map((response: Response) => <User> response.json())
+            .map((response: Response) => <any> response.json())
             .do(data => console.log('All:  ' + JSON.stringify(data)))
             .catch(this.handleError);
     }

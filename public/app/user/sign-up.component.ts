@@ -24,15 +24,15 @@ export class SignUpComponent implements OnInit {
         let user: User = new User();
         user = <User> formValues;
         if (this.signUpForm.valid) {
-            this.userService.signUpUser(user).subscribe((resp: User) => {
-            console.log('user from the service:::::::' + user);
-            if (null != user && resp.email === user.email) {
-                this.isUserValid = true;
-                this.router.navigate(['event']);
-            }else {
-                this.isUserValid = false;
-                console.log('user not validated for the::::' + user.email);
-            }
+            this.userService.signUpUser(user).subscribe((resp: any) => {
+                console.log('user from the service:::::::' + user);
+                if (null != user && resp.userSaved === 'Y') {
+                    this.isUserValid = true;
+                    this.router.navigate(['event']);
+                }else {
+                    this.isUserValid = false;
+                    console.log('user not validated for the::::' + user.email);
+                }
             });
         } else {
             this.isUserValid = false;

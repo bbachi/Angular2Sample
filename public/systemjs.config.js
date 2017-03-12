@@ -23,6 +23,7 @@
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       'angular2-google-maps': 'npm:angular2-google-maps',
+      'ng2-file-upload' : 'npm:ng2-file-upload',
 
       // other libraries
       'rxjs': 'npm:rxjs',
@@ -40,7 +41,13 @@
       "angular2-google-maps/core": {    
         "defaultExtension": "js",
         "main": "index.js"
+      },
+      /** Configuration for ng2-file-upload */
+      'ng2-file-upload' : { 
+        main: './ng2-file-upload.js',
+        defaultExtension: 'js'
       }
+      /** Configuration for ng2-file-upload */
     }
   });
 })(this);

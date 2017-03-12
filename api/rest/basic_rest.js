@@ -6,11 +6,24 @@ function resp(data){
     return data;
 }
 
-RestTemplate.prototype.post = function(url, postData,resp){
+RestTemplate.prototype.accessToken = function(url,resp){
+    console.log('url:::'+url);
+    request.post({
+        url: url,
+        auth: {user: 'rc_node_client',pass: 'ravecrate000999'},
+        form: {'grant_type': 'client_credentials'}
+    }, function(err, res) {
+    var json = JSON.parse(res.body);
+        resp(json);
+    });
+}
+
+RestTemplate.prototype.post = function(url, postData,accessToken,resp){
     request.post({
             headers: {'content-type' : 'application/json'},
             url:     url,
-            body:    JSON.stringify(postData)
+            body:    JSON.stringify(postData),
+            auth: {'bearer': accessToken}
         }, function(error, response, body){
             resp(body);
         });

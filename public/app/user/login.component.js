@@ -24,7 +24,7 @@ var LoginComponent = (function () {
         var _this = this;
         console.log(formValues);
         this.userService.validateUser(formValues.email, formValues.password).subscribe(function (user) {
-            console.log('user from the service:::::::' + user);
+            console.log('user from the service:::::::' + JSON.stringify(user));
             if (null != user && user.userValidated === 'Y') {
                 _this.isUserValid = true;
                 _this.router.navigate(['event']);

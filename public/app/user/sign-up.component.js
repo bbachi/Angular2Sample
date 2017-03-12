@@ -28,7 +28,7 @@ var SignUpComponent = (function () {
         if (this.signUpForm.valid) {
             this.userService.signUpUser(user).subscribe(function (resp) {
                 console.log('user from the service:::::::' + user);
-                if (null != user && resp.email === user.email) {
+                if (null != user && resp.userSaved === 'Y') {
                     _this.isUserValid = true;
                     _this.router.navigate(['event']);
                 }

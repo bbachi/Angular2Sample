@@ -15,6 +15,7 @@ var router_1 = require("@angular/router");
 var event_model_1 = require("../shared/event.model");
 var event_servcie_1 = require("../shared/event.servcie");
 var address_model_1 = require("../shared/address.model");
+var ng2_file_upload_1 = require("ng2-file-upload");
 var CreateEventsComponent = (function () {
     function CreateEventsComponent(eventService, router) {
         this.eventService = eventService;
@@ -22,6 +23,7 @@ var CreateEventsComponent = (function () {
         this.isFormValid = true;
         this.myDatePickerOptions = { dateFormat: 'mm/dd/yyyy' };
         this.todaysDate = { date: { month: (new Date().getMonth() + 1), day: new Date().getDay(), year: new Date().getFullYear() } };
+        this.uploader = new ng2_file_upload_1.FileUploader({ url: '/resource/uploadEventImg' });
     }
     CreateEventsComponent.prototype.createAnEvent = function (formValues) {
         var _this = this;
@@ -48,6 +50,7 @@ var CreateEventsComponent = (function () {
             });
         }
         else {
+            console.log('event form invalid');
             this.isFormValid = true;
         }
     };
