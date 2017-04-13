@@ -17,8 +17,7 @@ var LoginComponent = (function () {
         this.userService = userService;
         this.router = router;
         this.user = {};
-        this.isUserValid = true;
-        this.userLoggedIn = new core_1.EventEmitter();
+        this.eventchg = new core_1.EventEmitter();
     }
     LoginComponent.prototype.login = function (formValues) {
         var _this = this;
@@ -26,15 +25,17 @@ var LoginComponent = (function () {
         this.userService.validateUser(formValues.email, formValues.password).subscribe(function (user) {
             console.log('user from the service:::::::' + JSON.stringify(user));
             if (null != user && user.userValidated === 'Y') {
-                _this.isUserValid = true;
+                console.log('clicked:::1');
                 _this.router.navigate(['event']);
+                localStorage.setItem('currentUser', null);
+                console.log('clicked:::2');
+                _this.eventchg.emit(true);
             }
             else {
-                _this.isUserValid = false;
+                _this.eventchg.emit(false);
                 console.log('user not validated for the::::' + formValues.email);
             }
         });
-        this.isUserValid = false;
     };
     LoginComponent.prototype.forgotYourPassword = function (event) {
         event.preventDefault();
@@ -48,14 +49,13 @@ var LoginComponent = (function () {
 }());
 __decorate([
     core_1.Output(),
-    __metadata("design:type", Object)
-], LoginComponent.prototype, "userLoggedIn", void 0);
+    __metadata("design:type", core_1.EventEmitter)
+], LoginComponent.prototype, "eventchg", void 0);
 LoginComponent = __decorate([
     core_1.Component({
         selector: 'rc-login',
         templateUrl: 'app/user/login.component.html',
-        styleUrls: ['app/user/login.component.css'],
-        providers: [user_service_1.UserService]
+        styleUrls: ['app/user/login.component.css']
     }),
     __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router])
 ], LoginComponent);

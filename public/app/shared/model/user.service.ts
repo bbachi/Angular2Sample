@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, Output } from '@angular/core';
 import { User } from './user.model';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -11,14 +11,20 @@ import 'rxjs/add/operator/catch';
 export class UserService {
 
     private loginURL = '/resource/validateUser';
-    private signUpURL = '/resource/signupUser';
-    
-    // Observable string sources
-    private userLoggedIn = new Subject<boolean>();
-    // Observable string streams
-    userLoggedIn$ = this.userLoggedIn.asObservable();
+    private signUpURL = '/resource/signupUser'
 
-    constructor(private http: Http) { }
+    private userLoggedIn: Subject<boolean> = new Subject<boolean>();
+
+    constructor(private http: Http) {
+    }
+
+    getUserLoggedInStatus(): Observable<boolean> {
+        return this.userLoggedIn.asObservable();
+    }
+
+    justConsole(): void{
+        console.log('just console');
+    }
 
     validateUser(email: string, password: string): Observable<any> {
         let headers = new Headers({'Content-Type' : 'application/json'});
@@ -29,8 +35,11 @@ export class UserService {
             .do(data => {
                 console.log('validate user Response' + JSON.stringify(data));
                 if ( null != data && data.userValidated === 'Y' ){
+                    localStorage.setItem('currentUser', email);
                     this.userLoggedIn.next(true);
-                    console.log('userlogged in vlaue in service:::::' + this.userLoggedIn);
+                    console.log('userlogged in vlaue in service:::::');
+                }else{
+                    this.userLoggedIn.next(false);
                 }
             })
             .catch(this.handleError);
@@ -42,8 +51,20 @@ export class UserService {
         let body = {requestObj: user};
         return this.http.post(this.signUpURL, JSON.stringify(body), options)
             .map((response: Response) => <any> response.json())
-            .do(data => console.log('All:  ' + JSON.stringify(data)))
+            .do(data => {
+                console.log('All:  ' + JSON.stringify(data));
+                this.userLoggedIn.next(true);
+            })
             .catch(this.handleError);
+    }
+
+    isUserLoggedIn(): boolean {
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        console.log('current user from local storage::::::' + JSON.stringify(currentUser));
+        if (currentUser !== null) {
+            return true;
+        }
+        return false;
     }
 
     private handleError(error: Response) {

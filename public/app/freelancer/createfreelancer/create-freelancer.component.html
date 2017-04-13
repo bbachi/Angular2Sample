@@ -1,3 +1,98 @@
+<div id="createafreelancer">
+    <div class="panel panel-default">
+        <div class="panel-body">
+             <h3><img src="app\assets\images\freelancer\freelancerhead.png"> Become a Freelancer</h3>
+             <form id="createFreelancerForm" [formGroup]="createFreelancerForm" autocomplete="off" novalidate (ngSubmit)="saveFreelancer(createFreelancerForm.value)" >
+                  <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-control-label">First Name:</label>
+                        <input type="text" formControlName="firstName" class="form-control" id="inputEmail3" placeholder="First Name">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-control-label">Last Name:</label>
+                        <input type="text" formControlName="lastName" class="form-control" id="inputPassword3" placeholder="Last Name">
+                    </div>
+                 </div>
+                 <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-control-label">Type of Freelancer:</label>
+                        <select class="form-control" formControlName="type" id="exampleSelect1">
+                            <option value="Apparel">Apparel</option>
+                            <option value="Bartender">Bartender</option>
+                            <option value="Catering">Catering</option>
+                            <option value="Chauffeur">Chauffeur</option>
+                            <option value="Clown">Clown</option>
+                            <option value="Club">Club</option>
+                            <option value="Dancer">Dancer</option>
+                            <option value="DJ">DJ</option>
+                            <option value="Event Planner">Event Planner</option>
+                            <option value="Host">Host</option>
+                            <option value="Keynote Speaker">Keynote Speaker</option>
+                            <option value="Musician">Musician</option>
+                            <option value="Personal Trainer">Personal Trainer</option>
+                            <option value="Photographer">Photographer</option>
+                            <option value="Receptionist">Receptionist</option>
+                            <option value="Security">Security</option>
+                            <option value="Stylist">Stylist</option>
+                            <option value="Valet">Valet</option>
+                            <option value="Videographer">Videographer</option>
+                            <option value="Waitress">Waitress</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-control-label">State</label>
+                        <select (change)="onStateChange(stateContorl)" #stateContorl class="form-control" formControlName="state">
+                            <option *ngFor="let item of statesArray" value="{{item.key}}">{{item.state}}</option>
+                        </select>
+                    </div>
+                 </div>
+                 <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-control-label">City:</label>
+                        <select class="form-control" formControlName="city" id="exampleSelect1">
+                            <option value="CHI">Chicago</option>
+                            <option value="NY">New York</option>
+                            <option value="LV">Las Vegas</option>
+                            <option value="SD">San Diego</option>
+                            <option value="LA"selected>Los Angeles</option>
+                            <option value="SFO">San Francisco</option>
+                            <option value="BOS">Boston</option>
+                            <option value="MI">Miami</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-control-label">Description:</label>
+                        <textarea class="form-control" formControlName="description" id="exampleTextarea" rows="3" placeholder="Please provide a brief description of your skills/background"></textarea>
+                    </div>
+                 </div>
+                 <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-control-label">Hourly Rate:</label>
+                        $<input type="text" formControlName="hourlyRate" class="form-control" placeholder="Hourly Rate" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-control-label">Add Profile Picture:</label>
+                        <input type="file" class="form-control-file" id="exampleInputFile">
+                    </div>
+                 </div>
+                 <button type="submit" class="btn btn-warning" id="create-freelancer">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
 <div id="becomefreelancerdiv" class="image-bg">
 
     <div class="container-fluid create-event">
@@ -99,3 +194,5 @@
     </div>
    
 </div>
+
+-->

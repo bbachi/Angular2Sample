@@ -54,9 +54,9 @@ export class EventsComponent implements OnInit {
     }
 
     getEventsFromAPIBasedOnSearch(searchItem: string): void {
-        this.eventService.getEvents(this.addr , this.selectedDate, searchItem).subscribe(events => 
-        {   this.events = events;
-            console.log('events lenth:::::' + this.events.length) },
+        this.eventService.getEvents(this.addr , this.selectedDate, searchItem).subscribe(resp => 
+        {   this.events = resp.events;
+            console.log('events lenth:::::' + this.events.length); },
             error => this.errorMessage = <any>error);
     }
 

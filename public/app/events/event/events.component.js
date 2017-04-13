@@ -47,8 +47,8 @@ var EventsComponent = (function () {
     };
     EventsComponent.prototype.getEventsFromAPIBasedOnSearch = function (searchItem) {
         var _this = this;
-        this.eventService.getEvents(this.addr, this.selectedDate, searchItem).subscribe(function (events) {
-            _this.events = events;
+        this.eventService.getEvents(this.addr, this.selectedDate, searchItem).subscribe(function (resp) {
+            _this.events = resp.events;
             console.log('events lenth:::::' + _this.events.length);
         }, function (error) { return _this.errorMessage = error; });
     };

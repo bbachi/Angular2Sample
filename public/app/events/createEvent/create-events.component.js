@@ -32,6 +32,7 @@ var CreateEventsComponent = (function () {
             this.isFormValid = false;
             var event_1 = new event_model_1.Event();
             event_1 = formValues;
+            event_1.date = formValues.date.formatted;
             var address = new address_model_1.Address();
             address.streetNumber = event_1.streetNumber;
             address.streetName = event_1.streetName;

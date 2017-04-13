@@ -29,6 +29,7 @@ export class CreateEventsComponent implements OnInit {
             this.isFormValid = false;
             let event: Event = new Event();
             event = <Event> formValues;
+            event.date = formValues.date.formatted;
             let address: Address = new Address();
             address.streetNumber = event.streetNumber;
             address.streetName = event.streetName;

@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../model/user.service';
 
 @Component({
@@ -6,24 +6,29 @@ import { UserService } from '../model/user.service';
     templateUrl: 'app/shared/header/header.component.html',
     styleUrls: ['app/shared/header/header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-    userLoggedIn: boolean = false;
     showNav: boolean = false;
+    userLoggedIn: boolean = false;
     
     constructor(private userService: UserService) {
-       this.userService.userLoggedIn$.subscribe(value => {
-            this.userLoggedIn = value;
-            console.log('user logged in value in header::::' +  value);
-        });
     }
 
-    logout(): void{
-        this.userLoggedIn = false;
+    logout(): void {
+        localStorage.setItem('currentUser', null);
+        this.userLoggedIn = !this.userLoggedIn;
     }
 
     toggleMenu(): void {
         console.log('menu link clicked:::' + this.showNav);
         this.showNav = !this.showNav;
+    }
+
+    ngOnInit() {
+        console.log('sevvde:::');
+        this.userService.getUserLoggedInStatus().subscribe((isUserLoggedIn: boolean) => {
+            console.log('IS USER LOGGED IN::::::'+isUserLoggedIn);
+            this.userLoggedIn = isUserLoggedIn;
+        })
     }
 }

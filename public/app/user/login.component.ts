@@ -6,32 +6,31 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'rc-login',
     templateUrl: 'app/user/login.component.html',
-    styleUrls: ['app/user/login.component.css'],
-    providers: [UserService]
+    styleUrls: ['app/user/login.component.css']
 })
 export class LoginComponent {
      user: Object = {};
-     isUserValid: boolean = true;
 
-    constructor(private userService: UserService, private router: Router)
-    {
+    @Output() eventchg: EventEmitter<boolean> = new EventEmitter();
+
+    constructor(private userService: UserService, private router: Router) {
     }
-
-    @Output() userLoggedIn = new EventEmitter();
-
+    
     login(formValues: any) {
         console.log(formValues);
         this.userService.validateUser(formValues.email, formValues.password).subscribe((user: any) => {
             console.log('user from the service:::::::' + JSON.stringify(user));
             if (null != user && user.userValidated === 'Y') {
-                this.isUserValid = true;
+                console.log('clicked:::1');
                 this.router.navigate(['event']);
+                localStorage.setItem('currentUser', null);
+                console.log('clicked:::2');
+                this.eventchg.emit(true);
             } else {
-                this.isUserValid = false;
+                this.eventchg.emit(false);
                 console.log('user not validated for the::::' + formValues.email);
             }
         });
-        this.isUserValid = false;
     }
 
     forgotYourPassword(event: any) {

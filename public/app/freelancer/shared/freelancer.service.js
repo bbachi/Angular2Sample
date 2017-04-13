@@ -20,7 +20,7 @@ var FreelancerService = (function () {
     function FreelancerService(http) {
         this.http = http;
         this.freelancerByCityURL = '/resource/freelancerbycity';
-        this.saveFreelancerURL = '/resource/savefreelancer';
+        this.saveFreelancerURL = '/resource/saveFreelancer';
         this.getCitiesForStateURL = '/resource/getcitiesforstate';
         this.loggedIn = new Subject_1.Subject();
         this.validLogin = this.loggedIn.asObservable();

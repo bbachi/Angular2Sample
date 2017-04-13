@@ -1,23 +1,34 @@
-#createanevent h1{
-    text-align: center;
-    color: #ffffff;
-    margin-bottom:3%;
+#createanevent {
+    padding:5% 15%;
+    background-color: #00adef;
 }
 
-#createanevent label{
-    color: #ffffff;
+.panel-default{
+    background-color: #23527c;
+    
 }
 
-.crtevntsubmitbtn{
-    margin-top:2%;
-    margin-bottom:2%;
-    text-align: center;
+.panel-body h3 {
+    color:#ec971f;
+    border-bottom: 1px solid #ec971f;
+    padding-bottom:15px;
 }
 
-.error{
-    background-color: #E05C65 !important;
+.panel-body label {
+    color:#f1f1f1;
+    font-weight: normal;
 }
 
-.form-control.focus{
-    background-color: #ffffff;
+#createEventForm {
+    padding:2% 6%;
 }
+
+#createEventForm button {
+    width: 200px;
+}
+
+.form-group div{
+    margin-bottom:10px;
+}
+
+

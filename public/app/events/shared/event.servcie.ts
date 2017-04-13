@@ -16,12 +16,12 @@ export class EventService {
 
     constructor(private http: Http) { }
 
-    getEvents(address: Address, eventDate: string, searchItem: string): Observable<Event[]> {
+    getEvents(address: Address, eventDate: string, searchItem: string): Observable<any> {
         let headers = new Headers({'Content-Type' : 'application/json'});
         let options = new RequestOptions({headers: headers});
         let requestObject = {eventDate: eventDate, address: address, searchItem: searchItem};
         return this.http.post(this.eventsURL, JSON.stringify(requestObject), options)
-            .map((response: Response) => <Event[]> response.json())
+            .map((response: Response) => <any> response.json())
             .do(data => console.log('get events response::::' + JSON.stringify(data)))
             .catch(this.handleError);
     }

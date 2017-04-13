@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 import { User } from '../shared/model/user.model';
 import { UserService } from '../shared/model/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
    
    signUpForm: FormGroup;
-   isUserValid: boolean = true;
+   @Output() userLoggedIn = new EventEmitter<boolean>();
 
     constructor(private userService: UserService, private router: Router) {
 
@@ -27,15 +27,15 @@ export class SignUpComponent implements OnInit {
             this.userService.signUpUser(user).subscribe((resp: any) => {
                 console.log('user from the service:::::::' + user);
                 if (null != user && resp.userSaved === 'Y') {
-                    this.isUserValid = true;
+                     this.userLoggedIn.emit(true);
                     this.router.navigate(['event']);
                 }else {
-                    this.isUserValid = false;
+                     this.userLoggedIn.emit(false);
                     console.log('user not validated for the::::' + user.email);
                 }
             });
         } else {
-            this.isUserValid = false;
+             this.userLoggedIn.emit(false);
             console.log('sign up form invalidated:::');
         }
      }

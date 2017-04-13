@@ -13,21 +13,25 @@ var core_1 = require("@angular/core");
 var user_service_1 = require("../model/user.service");
 var HeaderComponent = (function () {
     function HeaderComponent(userService) {
-        var _this = this;
         this.userService = userService;
-        this.userLoggedIn = false;
         this.showNav = false;
-        this.userService.userLoggedIn$.subscribe(function (value) {
-            _this.userLoggedIn = value;
-            console.log('user logged in value in header::::' + value);
-        });
+        this.userLoggedIn = false;
     }
     HeaderComponent.prototype.logout = function () {
-        this.userLoggedIn = false;
+        localStorage.setItem('currentUser', null);
+        this.userLoggedIn = !this.userLoggedIn;
     };
     HeaderComponent.prototype.toggleMenu = function () {
         console.log('menu link clicked:::' + this.showNav);
         this.showNav = !this.showNav;
+    };
+    HeaderComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        console.log('sevvde:::');
+        this.userService.getUserLoggedInStatus().subscribe(function (isUserLoggedIn) {
+            console.log('IS USER LOGGED IN::::::' + isUserLoggedIn);
+            _this.userLoggedIn = isUserLoggedIn;
+        });
     };
     return HeaderComponent;
 }());

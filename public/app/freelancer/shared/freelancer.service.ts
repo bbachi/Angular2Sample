@@ -12,7 +12,7 @@ import 'rxjs/add/operator/catch';
 export class FreelancerService {
 
     private freelancerByCityURL = '/resource/freelancerbycity';
-    private saveFreelancerURL = '/resource/savefreelancer';
+    private saveFreelancerURL = '/resource/saveFreelancer';
     private getCitiesForStateURL = '/resource/getcitiesforstate';
 
     private loggedIn = new Subject<any>();

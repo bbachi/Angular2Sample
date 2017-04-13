@@ -73,6 +73,19 @@
             </div>
         </div>
 
+        <!--#discover-->
+        <div id="discover" class="discover-bg">
+            <div class="discover-content">
+                <h1 class="text-center">Find Events Near You</h1>
+                <div class="box">
+                    <div class="input-group city col-sm-4 col-md-4">
+                        <input [ngClass]= "{'error':!isValidCity}" type="text" id="autocompleteInput" class="form-control input-lg" #city placeholder="Enter your ZIP code or City,State" aria-describedby="basic-addon2">
+                        <span class="input-group-btn" id="basic-addon2"><button class="btn btn-default btn-lg" (click)="findYourCity(city)" type="button"><i class="fa fa-search"></i></button></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Controls -->
         <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
             <i class="fa fa-chevron-left fa-2x" aria-hidden="true" style="margin-top: 350px;"></i>
@@ -516,18 +529,7 @@
     </div>
 </div>
 
-<!--#discover-->
-<div id="discover" class="discover-bg">
-    <div class="discover-content">
-        <h1 class="text-center">Discover Your City</h1>
-        <div class="box">
-            <div class="input-group city col-sm-4 col-md-4">
-                <input [ngClass]= "{'error':!isValidCity}" type="text" id="autocompleteInput" class="form-control input-lg" #city placeholder="FIND YOUR CITY" aria-describedby="basic-addon2">
-                <span class="input-group-btn" id="basic-addon2"><button class="btn btn-default btn-lg" (click)="findYourCity(city)" type="button"><i class="fa fa-search"></i></button></span>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 
 <script>

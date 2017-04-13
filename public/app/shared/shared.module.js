@@ -21,7 +21,7 @@ SharedModule = __decorate([
         imports: [common_1.CommonModule, http_1.HttpModule, router_1.RouterModule],
         declarations: [index_1.FooterComponent, index_1.HeaderComponent],
         exports: [index_1.FooterComponent, index_1.HeaderComponent],
-        providers: [index_1.UserService, index_1.GoogleAPIService, index_1.EmailService]
+        providers: [index_1.GoogleAPIService, index_1.EmailService]
     })
 ], SharedModule);
 exports.SharedModule = SharedModule;

@@ -18,7 +18,7 @@ var SignUpComponent = (function () {
     function SignUpComponent(userService, router) {
         this.userService = userService;
         this.router = router;
-        this.isUserValid = true;
+        this.userLoggedIn = new core_1.EventEmitter();
     }
     SignUpComponent.prototype.signUp = function (formValues) {
         var _this = this;
@@ -29,17 +29,17 @@ var SignUpComponent = (function () {
             this.userService.signUpUser(user).subscribe(function (resp) {
                 console.log('user from the service:::::::' + user);
                 if (null != user && resp.userSaved === 'Y') {
-                    _this.isUserValid = true;
+                    _this.userLoggedIn.emit(true);
                     _this.router.navigate(['event']);
                 }
                 else {
-                    _this.isUserValid = false;
+                    _this.userLoggedIn.emit(false);
                     console.log('user not validated for the::::' + user.email);
                 }
             });
         }
         else {
-            this.isUserValid = false;
+            this.userLoggedIn.emit(false);
             console.log('sign up form invalidated:::');
         }
     };
@@ -59,6 +59,10 @@ var SignUpComponent = (function () {
     };
     return SignUpComponent;
 }());
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], SignUpComponent.prototype, "userLoggedIn", void 0);
 SignUpComponent = __decorate([
     core_1.Component({
         selector: 'rc-sign-up',

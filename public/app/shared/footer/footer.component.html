@@ -1,5 +1,47 @@
 <footer>
-    <div class="footer-links">
+    <div class="rcfooter">
+        <div class="row">
+            <div class="footer-menus col-md-4">
+                <h5>Menus:</h5>
+                 <div class="footer-link row">
+                    <ul class="col-md-6">
+                        <li><a [routerLink]="['/signup']">signup</a></li>
+                        <li><a [routerLink]="['/login']">login</a></li>
+                        <li><a [routerLink]="['/eventplanner']">eventplanner</a></li>
+                        <li><a [routerLink]="['/freelancer']">freelancer</a></li>
+                        <li><a [routerLink]="['/icons']">icons</a></li>
+                        <li><a [routerLink]="['/peoples']">peoples</a></li>
+                    </ul>
+                    <ul class="col-md-6">
+                        <li><a [routerLink]="['/events']">events</a></li>
+                        <li><a [routerLink]="['/contactus']">contact us</a></li>
+                        <li><a [routerLink]="['/terms']">terms</a></li>
+                        <li><a [routerLink]="['/findacity']">find a city</a></li>
+                        <li><a [routerLink]="['/about']">about us</a></li>
+                        <li><a [routerLink]="['/careers']">careers</a></li> 
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-contactus col-md-4">
+                <h5>Contact Us:</h5>
+                 <div class="social-media">
+                    <a href="http://www.facebook.com/ravecrate"><button type="button" class="btn btn-warning btn-circle"><i class="fa fa-facebook"></i></button></a>
+                    <a href="http://www.instagram.com/ravecrate"><button type="button" class="btn btn-warning btn-circle"><i class="fa fa-instagram"></i></button></a>
+                    <a href="http://www.twitter.com/ravecrate"><button type="button" class="btn btn-warning btn-circle"><i class="fa fa-twitter"></i></button></a>
+                    <a href="http://www.linkedin.com/ravecrate"><button type="button" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></button></a>
+                </div>
+            </div>
+            <div class="footer-copyrights col-md-4">
+                <h5>Copyrights:</h5>
+                <p>&copy; Copyright 2017 RaveCrate.</p>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<!--
+     <div class="footer-links">
         <div class="row">
             <div class="col-md-1"><a [routerLink]="['/signup']">signup</a></div>
             <div class="col-md-1"><a [routerLink]="['/login']">login</a></div>
@@ -26,4 +68,5 @@
             <a href="http://www.linkedin.com/ravecrate"><i class="fa fa-linkedin fa-2x"></i></a>
         </div>
     </div>
-</footer>
+
+    -->

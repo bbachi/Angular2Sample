@@ -8,9 +8,13 @@ var AWSS3 = require('./api/s3/s3.js');
 var express = require('express'),
     path = require('path'),
     bodyParser = require('body-parser');
+    session = require('express-session');
 
 var app = express();
 app.use(bodyParser.json());
+app.use(session({secret: 'ssshhhhh'}));
+
+var rcsession;
 
 var raveCrateRouter = express.Router();
 app.use('/resource',raveCrateRouter);
@@ -21,13 +25,16 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, '/node_modules')));
 app.use(express.static(path.join(__dirname, '/api')));
 
+var accessToken = '';
+
 //this is for loading the index.html
 app.get('/', function(req, res) {
+    rcsession = req.session;
+    rcsession.accessToken = accessToken;
     LOG.info("loading home page::::");
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-var accessToken = '';
 
 RestTemplate.accessToken(RestUtil.urlBin.AuthAccessToken,function(response){
     accessToken = response.access_token;
@@ -35,36 +42,40 @@ RestTemplate.accessToken(RestUtil.urlBin.AuthAccessToken,function(response){
 });
 
 raveCrateRouter.route('/validateUser').post(function(req,res) {
-    RestTemplate.post(RestUtil.urlBin.ValidateUser,RestUtil.request.validateUser(req), accessToken,function(response){
-        res.json(RestUtil.response.validateUser(JSON.parse(response)));
+    RestTemplate.post(RestUtil.urlBin.ValidateUser,RestUtil.request.validateUser(req), rcsession.accessToken,function(response){
+       createUserInSession(req,response);
+       res.json(RestUtil.response.validateUser(JSON.parse(response)));
     })
 });
 
 raveCrateRouter.route('/signupUser').post(function(req,res) {
-    console.log(req.body.requestObj);
-    RestTemplate.post(RestUtil.urlBin.SaveUser,RestUtil.request.signupUser(req), accessToken,function(response){
+    RestTemplate.post(RestUtil.urlBin.SaveUser,RestUtil.request.signupUser(req), rcsession.accessToken,function(response){
         res.json(RestUtil.response.signupUser(JSON.parse(response)));
     })
 });
 
 raveCrateRouter.route('/saveEvent').post(function(req,res) {
-    console.log(req.body.requestObj);
-    RestTemplate.post(RestUtil.urlBin.SaveEvent,RestUtil.request.SaveEvent(req), accessToken,function(response){
-        res.json(RestUtil.response.SaveEvent(JSON.parse(response)));
+    RestTemplate.post(RestUtil.urlBin.SaveEvent,RestUtil.request.saveEvent(req, rcsession.userId), rcsession.accessToken,function(response){
+        res.json(RestUtil.response.saveEvent(JSON.parse(response)));
     })
 });
 
 raveCrateRouter.route('/getEvents').post(function(req,res) {
-    console.log(req.body.requestObj);
-    RestTemplate.post(RestUtil.urlBin.SaveUser,RestUtil.request.getEvents(req), accessToken,function(response){
+    RestTemplate.post(RestUtil.urlBin.ListEvents,RestUtil.request.getEvents(req), rcsession.accessToken,function(response) {
         res.json(RestUtil.response.getEvents(JSON.parse(response)));
     })
 });
 
 raveCrateRouter.route('/getEventDtls').post(function(req,res) {
     console.log(req.body.requestObj);
-    RestTemplate.post(RestUtil.urlBin.SaveUser,RestUtil.request.getEventDtls(req), accessToken,function(response){
+    RestTemplate.post(RestUtil.urlBin.SaveUser,RestUtil.request.getEventDtls(req), rcsession.accessToken,function(response){
         res.json(RestUtil.response.getEventDtls(JSON.parse(response)));
+    })
+});
+
+raveCrateRouter.route('/saveFreelancer').post(function(req,res) {
+    RestTemplate.post(RestUtil.urlBin.SaveFreelancer,RestUtil.request.saveFreelancer(req, rcsession.userId), rcsession.accessToken,function(response){
+        res.json(RestUtil.response.saveFreelancer(JSON.parse(response)));
     })
 });
 
@@ -84,5 +95,18 @@ raveCrateRouter.route('/sendemail').post(function(req,res){
 app.listen(port, function(err) {
     LOG.info("running server on from gulp port:::::::" + port);
 });
+
+
+function createUserInSession(req,resp){
+    var res = JSON.parse(resp);
+    if(res.dataAvailable){
+        rcsession.email = req.body.email;
+        rcsession.userId = res.userId;
+        LOG.info('user validated:::creating session with user id:::::'+rcsession.userId);
+    }else{
+        LOG.info('user not validated:::session is not created for the:::'+req.body.email);
+    }
+    
+}
 
 

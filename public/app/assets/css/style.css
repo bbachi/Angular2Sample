@@ -2,9 +2,6 @@ body {
   overflow-x: hidden;
 }
 
-ul {
-  list-style: none;
-}
 
 a {
   color: #fff;
@@ -24,7 +21,7 @@ a:hover {
 .o-wrapper {
   -webkit-transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
-  background: #17B2EF;
+  background: #23527c;
   height: 85px;
   /*border-bottom: solid;*/
   border-width: 1px;
@@ -543,12 +540,18 @@ a:hover {
 .rightlogin li {
   display: inline;
 }
-.rightlogin a {
+.rightlogin button {
   display: inline-block;
   margin-left: 20px;
   margin-top: 30px;
-  font-size: 18px;
+  font-size: 15px;
+  padding: 4px 15px;
 }
+
+.rightlogin button span {
+  padding-right:10px;
+}
+
 .rightlogin input {
   margin-top: 20px;
   margin-right: 20px;

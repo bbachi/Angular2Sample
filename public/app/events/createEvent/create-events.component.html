@@ -1,4 +1,154 @@
 <div id="createanevent">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3><img src="app\assets\images\events\eventsheads.png"> Create An Event</h3>
+             <form id="createEventForm" [formGroup]="createEventForm" autocomplete="off" novalidate (ngSubmit)="createAnEvent(createEventForm.value)" method="post">
+                  <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-control-label">Name of Event</label>
+                        <input  [ngClass]= "{'error': !isFormValid}" type="text" class="form-control" id="event-name" formControlName="title" placeholder="Event name">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-control-label">Event Venue</label>
+                        <input [ngClass]= "{'error': !isFormValid}" type="text" class="form-control" id="event-venue" formControlName="venue" placeholder="Event venue">
+                    </div>
+                 </div>
+                 <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-control-label">Event Host</label>
+                        <input [ngClass]= "{'error': !isFormValid}" type="text" class="form-control" id="event-host" formControlName="host" placeholder="Event hosted by">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-control-label">Street Number</label>
+                        <input [ngClass]= "{'error': !isFormValid}" type="text" class="form-control" id="event-address" formControlName="streetNumber" placeholder="Address">
+                    </div>
+                 </div>
+                 <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-control-label">Street Name</label>
+                        <input [ngClass]= "{'error': !isFormValid}" type="text" class="form-control" id="event-address" formControlName="streetName" placeholder="Address">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-control-label">City</label>
+                         <input [ngClass]= "{'error': !isFormValid}" type="text" class="form-control" id="event-city" formControlName="city" placeholder="City">
+                    </div>
+                 </div>
+                 <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-control-label">State</label>
+                         <input [ngClass]= "{'error': !isFormValid}" type="text" class="form-control" id="event-state" formControlName="state" placeholder="State">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-control-label">Zip Code</label>
+                         <input [ngClass]= "{'error': !isFormValid}" type="text" class="form-control" id="event-zip-code" formControlName="zipcode" placeholder="Zip Code">
+                    </div>
+                 </div>
+                 <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-control-label">Date</label>
+                        <my-date-picker name="mydate" [(ngModel)]="todaysDate" [options]="myDatePickerOptions" formControlName="date"></my-date-picker>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-control-label">Start Time (Military Time)</label>
+                        <select [ngClass]= "{'error': !isFormValid}" class="form-control" id="event-hour" formControlName="startTimeHour">
+                            <option>00</option>
+                            <option>01</option>
+                            <option>02</option>
+                            <option>03</option>
+                            <option>04</option>
+                            <option>05</option>
+                            <option>06</option>
+                            <option>07</option>
+                            <option>08</option>
+                            <option>09</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                            <option>21</option>
+                            <option>22</option>
+                            <option>23</option>
+                     </select>
+                    </div>
+                 </div>
+                 <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-control-label">Minute</label>
+                        <select [ngClass]= "{'error': !isFormValid}" class="form-control" id="event-minute" formControlName="startTimeMin">
+                            <option>00</option>
+                            <option>05</option>
+                            <option>10</option>
+                            <option>15</option>
+                            <option>20</option>
+                            <option>35</option>
+                            <option>30</option>
+                            <option>35</option>
+                            <option>40</option>
+                            <option>45</option>
+                            <option>50</option>
+                            <option>55</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-control-label">Description</label>
+                        <textarea [ngClass]= "{'error': !isFormValid}" class="form-control" formControlName="description" id="event-description" rows="3" placeholder="Please provide a brief description of your event"></textarea>
+                    </div>
+                 </div>
+                 <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-control-label">Type of Event</label>
+                        <select [ngClass]= "{'error': !isFormValid}" class="form-control" id="event-type" formControlName="type">
+                            <option>Public</option>
+                            <option>Private</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-control-label">Fee</label>
+                        <input [ngClass]= "{'error': !isFormValid}" type="email" class="form-control" formControlName="fee" id="event-fee" placeholder="Please state the price to attend the event">
+                    </div>
+                 </div>
+                 <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-control-label">Contact Phone</label>
+                         <input [ngClass]= "{'error': !isFormValid}" type="email" class="form-control" formControlName="phone" id="event-phone" placeholder="Contact Phone">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-control-label">Email</label>
+                        <input [ngClass]= "{'error': !isFormValid}" type="email" class="form-control" formControlName="email" id="event-email" placeholder="Contact Email">
+                    </div>
+                 </div>
+                 <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-control-label">Add Image</label>
+                        <input type="file" ng2FileSelect [uploader]="uploader" class="form-control-file" id="exampleInputFile">
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-warning" id="create-event">Submit</button>
+                    </div>
+                 </div>
+             </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--
+<div id="createanevent">
     <div class="container-fluid create-event">
         <h1>Create An Event</h1>
         <form [formGroup]="createEventForm" autocomplete="off" novalidate (ngSubmit)="createAnEvent(createEventForm.value)" method="post">
@@ -161,3 +311,5 @@
     </div>
    
 </div>
+
+-->

@@ -1,4 +1,5 @@
 var request = require('request');
+var LOG = require('./../util/log.js');
 
 var RestTemplate = function() { };
 
@@ -7,7 +8,7 @@ function resp(data){
 }
 
 RestTemplate.prototype.accessToken = function(url,resp){
-    console.log('url:::'+url);
+    LOG.info('url:::'+url);
     request.post({
         url: url,
         auth: {user: 'rc_node_client',pass: 'ravecrate000999'},
@@ -19,13 +20,20 @@ RestTemplate.prototype.accessToken = function(url,resp){
 }
 
 RestTemplate.prototype.post = function(url, postData,accessToken,resp){
+    LOG.info('url:::'+url+'::access token::::'+accessToken+':::postdata::::'+JSON.stringify(postData));
     request.post({
             headers: {'content-type' : 'application/json'},
             url:     url,
             body:    JSON.stringify(postData),
             auth: {'bearer': accessToken}
         }, function(error, response, body){
-            resp(body);
+            LOG.info(response.statusCode);
+            LOG.info(response.statusMessage);
+            if(response.statusCode == 200){
+                resp(body);
+            }else{
+                resp(response.statusMessage);
+            }
         });
 }
 

@@ -6,3 +6,38 @@ a{
 button{
     color:#ffffff;
 }
+
+.hdrmenukinks{
+    float: left;
+    width:50%;
+}
+
+.hdrmenukinks a{
+    padding: 3% 5% 2px;
+    display: inline-block;
+    font-size:15px;
+    width: 21%;
+    margin-right:3%;
+    text-align: center;
+}
+
+.hdrmenukinks a:nth-child(1){
+    border-bottom: 3px solid #00cccc;
+    box-shadow: 0 20px 20px -20px #00cccc;
+}
+
+.hdrmenukinks a:nth-child(2){
+    border-bottom: 3px solid #e66000;
+    box-shadow: 0 20px 20px -20px #e66000;
+}
+
+.hdrmenukinks a:nth-child(3){
+    border-bottom: 3px solid #e60060;
+    box-shadow: 0 20px 20px -20px #e60060;
+}
+
+.hdrmenukinks a:nth-child(4){
+    border-bottom: 3px solid #88cc00;
+    box-shadow: 0 20px 20px -20px #88cc00;
+}
+

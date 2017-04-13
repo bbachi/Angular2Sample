@@ -21,11 +21,14 @@ var UserService = (function () {
         this.http = http;
         this.loginURL = '/resource/validateUser';
         this.signUpURL = '/resource/signupUser';
-        // Observable string sources
         this.userLoggedIn = new Subject_1.Subject();
-        // Observable string streams
-        this.userLoggedIn$ = this.userLoggedIn.asObservable();
     }
+    UserService.prototype.getUserLoggedInStatus = function () {
+        return this.userLoggedIn.asObservable();
+    };
+    UserService.prototype.justConsole = function () {
+        console.log('just console');
+    };
     UserService.prototype.validateUser = function (email, password) {
         var _this = this;
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
@@ -36,20 +39,36 @@ var UserService = (function () {
             .do(function (data) {
             console.log('validate user Response' + JSON.stringify(data));
             if (null != data && data.userValidated === 'Y') {
+                localStorage.setItem('currentUser', email);
                 _this.userLoggedIn.next(true);
-                console.log('userlogged in vlaue in service:::::' + _this.userLoggedIn);
+                console.log('userlogged in vlaue in service:::::');
+            }
+            else {
+                _this.userLoggedIn.next(false);
             }
         })
             .catch(this.handleError);
     };
     UserService.prototype.signUpUser = function (user) {
+        var _this = this;
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
         var body = { requestObj: user };
         return this.http.post(this.signUpURL, JSON.stringify(body), options)
             .map(function (response) { return response.json(); })
-            .do(function (data) { return console.log('All:  ' + JSON.stringify(data)); })
+            .do(function (data) {
+            console.log('All:  ' + JSON.stringify(data));
+            _this.userLoggedIn.next(true);
+        })
             .catch(this.handleError);
+    };
+    UserService.prototype.isUserLoggedIn = function () {
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        console.log('current user from local storage::::::' + JSON.stringify(currentUser));
+        if (currentUser !== null) {
+            return true;
+        }
+        return false;
     };
     UserService.prototype.handleError = function (error) {
         console.log('Error with http request:::::' + error.json);

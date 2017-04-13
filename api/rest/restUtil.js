@@ -8,7 +8,10 @@ RestUtil.prototype.request = {};
 RestUtil.prototype.response = {};
 
 RestUtil.prototype.request.validateUser = function(req){
-    var reqObj = {userName:req.body.email,password:req.body.password};
+    var user = {email:req.body.email,password:req.body.password};
+    var reqObj = {};
+    reqObj.appName = "WEB";
+    reqObj.user = user;
     LOG.info('validateUser Request object:::::::'+JSON.stringify(reqObj));
     return reqObj; 
 }
@@ -26,8 +29,11 @@ RestUtil.prototype.response.validateUser = function(res){
 }
 
 RestUtil.prototype.request.signupUser = function(req) {
-    LOG.info('sign up user Request object:::::::'+JSON.stringify(req.body.requestObj));
-    var reqObj = req.body.requestObj;
+    var user = req.body.requestObj;
+    var reqObj = {};
+    reqObj.appName = "WEB";
+    reqObj.user = user;
+    LOG.info('sign up user Request object:::::::'+JSON.stringify(reqObj));
     return reqObj;
 }
 
@@ -43,15 +49,20 @@ RestUtil.prototype.response.signupUser = function(res) {
     return resObj;
 }
 
-RestUtil.prototype.request.saveEvent = function(req) {
-    LOG.info('sign up user Request object:::::::'+JSON.stringify(req.body.requestObj));
-    var reqObj = req.body.requestObj;
+RestUtil.prototype.request.saveEvent = function(req,userId) {
+    LOG.info('save event Request object:::::::'+JSON.stringify(req.body.event));
+    LOG.info('user id from the session:::::::'+userId);
+    var event = req.body.event;
+    var reqObj = {};
+    reqObj.event = event;
+    reqObj.appName = "WEB";
+    reqObj.userId = userId;
     return reqObj;
 }
 
 RestUtil.prototype.response.saveEvent = function(res) {
     var resObj = {eventSaved:'N'};
-    LOG.info('sign up user Response object:::::::'+JSON.stringify(res));
+    LOG.info('save event Response object:::::::'+JSON.stringify(res));
     if(res.dataAvailable){
         resObj.eventSaved = 'Y';
         resObj.eventId = res.eventId;
@@ -62,32 +73,40 @@ RestUtil.prototype.response.saveEvent = function(res) {
 }
 
 RestUtil.prototype.request.getEvents = function(req) {
-    LOG.info('sign up user Request object:::::::'+JSON.stringify(req.body.requestObj));
-    var reqObj = req.body.requestObj;
+    LOG.info('get events Request object:::::::'+JSON.stringify(req.body.requestObj));
+    var address = req.body.address;
+    var date = req.body.eventDate;
+    var searchItem = req.body.searchItem;
+    var reqObj = {};
+    reqObj.appName = "WEB";
+    reqObj.address = req.body.address;
+    reqObj.date = req.body.eventDate;
     return reqObj;
 }
 
 RestUtil.prototype.response.getEvents = function(res) {
     var resObj = {eventsFound:'N'};
-    LOG.info('sign up user Response object:::::::'+JSON.stringify(res));
+    LOG.info('get events Response object:::::::'+JSON.stringify(res));
     if(res.dataAvailable){
         resObj.eventsFound = 'Y';
-        resObj.events = res.events;
+        resObj.events = res.eventList;
+        LOG.info('Events list size:::::::'+resObj.events.length);
     }else{
+        resObj.events = [];
         resObj.errorMessage = res.errorMessage;
     }
     return resObj;
 }
 
 RestUtil.prototype.request.getEventDtls = function(req) {
-    LOG.info('sign up user Request object:::::::'+JSON.stringify(req.body.requestObj));
+    LOG.info('get event details Request object:::::::'+JSON.stringify(req.body.requestObj));
     var reqObj = req.body.requestObj;
     return reqObj;
 }
 
 RestUtil.prototype.response.getEventDtls = function(res) {
     var resObj = {eventDtlsFound:'N'};
-    LOG.info('sign up user Response object:::::::'+JSON.stringify(res));
+    LOG.info('get event details Response object:::::::'+JSON.stringify(res));
     if(res.dataAvailable){
         resObj.eventDtlsFound = 'Y';
         resObj.eventDtls = res.eventDtls;
@@ -97,6 +116,32 @@ RestUtil.prototype.response.getEventDtls = function(res) {
     return resObj;
 }
 
+
+RestUtil.prototype.request.saveFreelancer = function(req,userId) {
+    LOG.info('save freelancer Request object:::::::'+JSON.stringify(req.body.event));
+    LOG.info('user id from the session:::::::'+userId);
+    var freelancer = req.body.freelancer;
+    var reqObj = {};
+    reqObj.freelancer = freelancer;
+    reqObj.appName = "WEB";
+    reqObj.userId = userId;
+    return reqObj;
+}
+
+RestUtil.prototype.response.saveFreelancer = function(res) {
+    var resObj = {freelancerSaved:'N'};
+    LOG.info('save event Response object:::::::'+JSON.stringify(res));
+    if(res.dataAvailable){
+        resObj.freelancerSaved = 'Y';
+        resObj.freelancerId = res.freelancerId;
+    }else{
+        resObj.errorMessage = res.errorMessage;
+    }
+    return resObj;
+}
+
+
+
 RestUtil.prototype.urlBin = {
         AuthAccessToken: baseURL+"oauth/token?grant_type=password&username=rc&password=rc9999",
         ValidateUser: baseURL+"auth/validate",
@@ -104,6 +149,7 @@ RestUtil.prototype.urlBin = {
 
         ListEventsByAddress: baseURL+"event/list",
         ListEventsByDate:  baseURL+"event/list",
+        ListEvents: baseURL+"event/list",
         SaveEvent:  baseURL+"event/create",
         GetEventDetails: baseURL+"event/detail",
 

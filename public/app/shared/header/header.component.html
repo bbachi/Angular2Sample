@@ -1,9 +1,15 @@
 <div id="o-wrapper" class="o-wrapper"> <!--has-slide-left -->
     <button id="menubutton c-button--slide-left" (click)="toggleMenu()" class="c-button"><img src="app/assets/images/logo.png" class="c-button-img">MENU</button>
+    <div class="hdrmenukinks">
+        <a [routerLink]="['/about']">ABOUT US</a>
+        <a [routerLink]="['/event']">EVENTS</a>
+        <a [routerLink]="['/freelancer']">FREELANCERS</a>
+        <a [routerLink]="['/comingsoon']">MY PROFILE</a>
+    </div>
     <div class="rightlogin">
-        <a *ngIf="!userLoggedIn" [routerLink]="['/login']">LOG IN</a>
-        <a *ngIf="!userLoggedIn" [routerLink]="['/signup']">SIGN UP</a>
-        <a *ngIf="userLoggedIn" (click)="logout()">LOG OUT</a>
+        <button type="button" class="btn btn-warning" *ngIf="!userLoggedIn"  [routerLink]="['/login']"><span class="glyphicon glyphicon-user"></span>Login</button>
+        <button type="button" class="btn btn-warning" *ngIf="!userLoggedIn"  [routerLink]="['/signup']"><span>&#x1f511;</span>Sign Up</button>
+        <button type="button" class="btn btn-warning" *ngIf="userLoggedIn" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout</button>
     </div>
 </div>
 
