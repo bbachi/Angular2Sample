@@ -12,6 +12,7 @@ var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var index_1 = require("./forgotpassword/index");
+var resetpassoword_component_1 = require("./resetpassword/resetpassoword.component");
 var index_2 = require("./home/index");
 var index_3 = require("./comingsoon/index");
 //feature module imports
@@ -31,7 +32,7 @@ AppModule = __decorate([
             shared_module_1.SharedModule, events_module_1.EventsModule, user_module_1.UserModule, app_router_module_1.AppRoutingModule],
         declarations: [
             app_component_1.AppComponent, index_3.ComingsoonComponent,
-            index_2.HomeComponent, index_1.ForgotPasswordComponent, index_1.ForgotPasswordConfirmComponent
+            index_2.HomeComponent, index_1.ForgotPasswordComponent, index_1.ForgotPasswordConfirmComponent, resetpassoword_component_1.ResetPasswordComponent
         ],
         bootstrap: [app_component_1.AppComponent],
         providers: []

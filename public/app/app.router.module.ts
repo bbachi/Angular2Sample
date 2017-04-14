@@ -8,11 +8,13 @@ import { ForgotPasswordComponent } from './forgotpassword/forgot-password.compon
 import { ForgotPasswordConfirmComponent } from './forgotpassword/fp-confirmation.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ComingsoonComponent } from './comingsoon/comingsoon.component';
+import { ResetPasswordComponent } from './resetpassword/resetpassoword.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'forgotyourpassword', component: ForgotPasswordComponent },
   { path: 'forgotpasswordconfirm', component: ForgotPasswordConfirmComponent },
+  { path: 'passwordreset/:txnId' , component: ResetPasswordComponent },
   { path: 'about', loadChildren: 'app/about/aboutus.module#AboutUsModule' },
   { path: 'contactus', loadChildren: 'app/contactus/contact-us.module#ContactUsModule' },
   { path: 'createanevent', loadChildren: 'app/events/createEvent/create-event.module#CreateEventsModule' },

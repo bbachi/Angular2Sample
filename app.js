@@ -79,6 +79,18 @@ raveCrateRouter.route('/saveFreelancer').post(function(req,res) {
     })
 });
 
+raveCrateRouter.route('/resetpassword').post(function(req,res) {
+    RestTemplate.post(RestUtil.urlBin.ResetPasswordAndLogin,RestUtil.request.saveFreelancer(req, rcsession.userId), rcsession.accessToken,function(response){
+        res.json(RestUtil.response.saveFreelancer(JSON.parse(response)));
+    })
+});
+
+raveCrateRouter.route('/gettxnidforpassword').post(function(req,res) {
+    RestTemplate.post(RestUtil.urlBin.GetTxnIdForResetPassword,RestUtil.request.getTxnIdForPswrd(req), rcsession.accessToken,function(response){
+        res.json(RestUtil.response.getTxnIdForPswrd(JSON.parse(response)));
+    })
+});
+
 raveCrateRouter.route('/uploadEventImg').post(function(req,res){
     AWSS3.uploadImage(req.body.file, function(response){
         LOG.info(response.status);
@@ -92,12 +104,16 @@ raveCrateRouter.route('/sendemail').post(function(req,res){
     Email.sendEmail(emailOptions);
 });
 
+app.get('*', function(req, res) {
+   res.sendFile(path.join(__dirname + '/index.html'));
+});
+
 app.listen(port, function(err) {
     LOG.info("running server on from gulp port:::::::" + port);
 });
 
 
-function createUserInSession(req,resp){
+function createUserInSession(req,resp) {
     var res = JSON.parse(resp);
     if(res.dataAvailable){
         rcsession.email = req.body.email;

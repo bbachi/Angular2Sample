@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent }  from './app.component';
 import { ForgotPasswordComponent, ForgotPasswordConfirmComponent } from './forgotpassword/index';
+import { ResetPasswordComponent } from './resetpassword/resetpassoword.component';
 import { HomeComponent } from './home/index';
 import { ComingsoonComponent } from './comingsoon/index';
 
@@ -20,7 +21,7 @@ import { AppRoutingModule } from './app.router.module';
             SharedModule, EventsModule, UserModule, AppRoutingModule ],
   declarations: [
     AppComponent, ComingsoonComponent,
-    HomeComponent, ForgotPasswordComponent, ForgotPasswordConfirmComponent],
+    HomeComponent, ForgotPasswordComponent, ForgotPasswordConfirmComponent, ResetPasswordComponent],
   bootstrap: [ AppComponent ],
   providers: []
 })

@@ -14,10 +14,12 @@ var home_component_1 = require("./home/home.component");
 var forgot_password_component_1 = require("./forgotpassword/forgot-password.component");
 var fp_confirmation_component_1 = require("./forgotpassword/fp-confirmation.component");
 var comingsoon_component_1 = require("./comingsoon/comingsoon.component");
+var resetpassoword_component_1 = require("./resetpassword/resetpassoword.component");
 exports.routes = [
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'forgotyourpassword', component: forgot_password_component_1.ForgotPasswordComponent },
     { path: 'forgotpasswordconfirm', component: fp_confirmation_component_1.ForgotPasswordConfirmComponent },
+    { path: 'passwordreset/:txnId', component: resetpassoword_component_1.ResetPasswordComponent },
     { path: 'about', loadChildren: 'app/about/aboutus.module#AboutUsModule' },
     { path: 'contactus', loadChildren: 'app/contactus/contact-us.module#ContactUsModule' },
     { path: 'createanevent', loadChildren: 'app/events/createEvent/create-event.module#CreateEventsModule' },

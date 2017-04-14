@@ -141,6 +141,49 @@ RestUtil.prototype.response.saveFreelancer = function(res) {
 }
 
 
+RestUtil.prototype.request.getTxnIdForPswrd = function(req){
+    var reqObj = {};
+    reqObj.appName = "WEB";
+    reqObj.email = req.body.email;
+    LOG.info('validateUser Request object:::::::'+JSON.stringify(reqObj));
+    return reqObj; 
+}
+
+RestUtil.prototype.response.getTxnIdForPswrd = function(res){
+    var resObj = {transactionId:''};
+    LOG.info('validateUser Response object:::::::'+JSON.stringify(res));
+    if(res.dataAvailable){
+        resObj.transactionId = data.transactionId;
+        resObj.email = data.email;
+    }else{
+        resObj.errorMessage = res.errorMessage;
+    }
+    return resObj;
+}
+
+
+RestUtil.prototype.request.resetPassword = function(req){
+    var reqObj = {};
+    reqObj.appName = "WEB";
+    reqObj.transactionId = req.body.transactionId;
+    reqObj.password = req.body.password;
+    LOG.info('reset password Request object:::::::'+JSON.stringify(reqObj));
+    return reqObj; 
+}
+
+RestUtil.prototype.response.resetPassword = function(res){
+    var resObj = {userValidated:'N'};
+    LOG.info('reset password Response object:::::::'+JSON.stringify(res));
+   if(res.dataAvailable){
+        resObj.userValidated = 'Y';
+        resObj.userId = res.user.userId;
+    }else{
+        resObj.errorMessage = res.errorMessage;
+    }
+    return resObj;
+}
+
+
 
 RestUtil.prototype.urlBin = {
         AuthAccessToken: baseURL+"oauth/token?grant_type=password&username=rc&password=rc9999",
@@ -157,6 +200,9 @@ RestUtil.prototype.urlBin = {
         ListFreelancersByDate: baseURL+"freelancer/list",
         SaveFreelancer: baseURL+"freelancer/create",
         GetFreelancerDetails: baseURL+"freelancer/detail",
+
+        ResetPasswordAndLogin: baseURL+"password/reset",
+        GetTxnIdForResetPassword: baseURL+"password/forgot"
     }
 
 module.exports = new RestUtil();
