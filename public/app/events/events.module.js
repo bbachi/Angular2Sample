@@ -13,6 +13,7 @@ var mydatepicker_1 = require("mydatepicker");
 var core_module_1 = require("angular2-google-maps/core/core-module");
 var http_1 = require("@angular/http");
 var index_1 = require("./index");
+var events_routing_module_1 = require("./events-routing.module");
 var EventsModule = (function () {
     function EventsModule() {
     }
@@ -20,7 +21,7 @@ var EventsModule = (function () {
 }());
 EventsModule = __decorate([
     core_1.NgModule({
-        imports: [common_1.CommonModule, http_1.HttpModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, mydatepicker_1.MyDatePickerModule, core_module_1.AgmCoreModule.forRoot({ apiKey: 'AIzaSyBZ0ppuSTjLo1HPsuSIrZv9UTJgan8i2Cw', libraries: ['places'] })],
+        imports: [common_1.CommonModule, http_1.HttpModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, mydatepicker_1.MyDatePickerModule, core_module_1.AgmCoreModule.forRoot({ apiKey: 'AIzaSyBZ0ppuSTjLo1HPsuSIrZv9UTJgan8i2Cw', libraries: ['places'] }), events_routing_module_1.EventsRoutingModule],
         declarations: [index_1.EventsComponent, index_1.EventDetailComponent],
         exports: [index_1.EventsComponent, index_1.EventDetailComponent],
         providers: [index_1.EventService]

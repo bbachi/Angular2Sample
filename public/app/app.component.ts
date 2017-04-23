@@ -1,6 +1,5 @@
 import {Component } from '@angular/core';
-import { UserService } from './shared/model/user.service';
-
+import { UserService } from './_services/user.service.';
 
 @Component({
     selector: 'rc-app',
@@ -14,7 +13,6 @@ import { UserService } from './shared/model/user.service';
 export class AppComponent {
 
      constructor(private userService: UserService) {
-       
     }
 
     isLeftNavOpen: boolean = false;

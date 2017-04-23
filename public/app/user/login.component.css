@@ -17,12 +17,11 @@ body{
 
 .errorMsg{
     color:red;
-    margin-right:15%;
-    margin-top:2%;
+    font-weight: bold;
 }
 
 .become-login {
-  color: #fff;
+  color: #f0ad4e;
   text-align: center;
 }
 
@@ -32,4 +31,84 @@ body{
 
 .forgot-pw-wrap a{
     text-decoration: none;
+}
+
+.login-form-wrap{
+    border-radius: 10px;
+    background-color: #fff;
+    height: 500px;
+    width: 700px;
+    margin:0px;
+}
+
+.loginhead {
+    background-color: #23527c;
+    height:30px;
+    width:200px;
+    padding:10px;
+    color:white;
+    margin-left:10%;
+}
+
+.loginformwrap{
+    margin: 100px 30% 0px;
+}
+
+.login-form{
+    padding-top:10%;
+}
+
+#loginform .input-group{
+    padding: 0px 40px;
+    margin-top:20px;
+    height:50px;
+}
+
+.input-group input{
+    height:50px;
+    background-color:#eee;
+}
+
+.login-form button {
+  margin: 0 auto;
+  display: block;
+  color:black;
+  margin-top: 40px;
+  height: 45px;
+  width: 300px;
+  font-weight: bold;
+}
+
+.btn-signup{
+  background-color: #1E2264;
+  border: 2px solid #1E2264;
+}
+
+.signuptoday button{
+    color:#fff;
+}
+
+.signuptoday button:hover{
+    color:black;
+}
+
+.btn-signup:hover{
+    background-color: #fff;
+}
+
+.paddingtop40{
+    padding-top:40px;
+}
+
+.linkstwo input {
+    display: inline;
+}
+
+.linkstwo label{
+    color:#23527c;
+}
+
+.forgotyourpass a{
+    margin-left:20%;
+    color:#23527c;
 }

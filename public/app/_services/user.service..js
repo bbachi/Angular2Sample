@@ -22,6 +22,7 @@ var UserService = (function () {
         this.loginURL = '/resource/validateUser';
         this.signUpURL = '/resource/signupUser';
         this.userLoggedIn = new Subject_1.Subject();
+        this.redirectUrl = 'login';
     }
     UserService.prototype.getUserLoggedInStatus = function () {
         return this.userLoggedIn.asObservable();
@@ -81,4 +82,4 @@ UserService = __decorate([
     __metadata("design:paramtypes", [http_1.Http])
 ], UserService);
 exports.UserService = UserService;
-//# sourceMappingURL=user.service.js.map
+//# sourceMappingURL=user.service..js.map

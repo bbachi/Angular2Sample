@@ -30,7 +30,7 @@ var EventsComponent = (function () {
     }
     EventsComponent.prototype.eventDetail = function (eventId) {
         console.log('going to event detail page with the event id:::::' + eventId);
-        this.router.navigate(['eventdetail']);
+        this.router.navigate(['/detail.htm']);
     };
     EventsComponent.prototype.searchEventsInYourArea = function (searchTerm) {
         console.log('search item entered::::::' + searchTerm);

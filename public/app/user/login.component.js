@@ -10,32 +10,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var user_service_1 = require("../shared/model/user.service");
+var user_service_1 = require("./../_services/user.service.");
 var router_1 = require("@angular/router");
+var forms_1 = require("@angular/forms");
 var LoginComponent = (function () {
     function LoginComponent(userService, router) {
         this.userService = userService;
         this.router = router;
         this.user = {};
+        this.isUserValidated = true;
         this.eventchg = new core_1.EventEmitter();
     }
     LoginComponent.prototype.login = function (formValues) {
         var _this = this;
         console.log(formValues);
-        this.userService.validateUser(formValues.email, formValues.password).subscribe(function (user) {
-            console.log('user from the service:::::::' + JSON.stringify(user));
-            if (null != user && user.userValidated === 'Y') {
-                console.log('clicked:::1');
-                _this.router.navigate(['event']);
-                localStorage.setItem('currentUser', null);
-                console.log('clicked:::2');
-                _this.eventchg.emit(true);
-            }
-            else {
-                _this.eventchg.emit(false);
-                console.log('user not validated for the::::' + formValues.email);
-            }
-        });
+        if (this.loginForm.valid) {
+            this.userService.validateUser(formValues.email, formValues.password).subscribe(function (user) {
+                console.log('user from the service:::::::' + JSON.stringify(user));
+                if (null != user && user.userValidated === 'Y') {
+                    _this.isUserValidated = true;
+                    _this.router.navigate(['event.htm']);
+                    localStorage.setItem('currentUser', user.userId);
+                    _this.eventchg.emit(true);
+                }
+                else {
+                    _this.isUserValidated = false;
+                    _this.eventchg.emit(false);
+                    console.log('user not validated for the::::' + formValues.email);
+                }
+            });
+        }
+        else {
+            this.isUserValidated = false;
+            console.log('login form is invalid');
+        }
     };
     LoginComponent.prototype.forgotYourPassword = function (event) {
         event.preventDefault();
@@ -44,6 +52,14 @@ var LoginComponent = (function () {
     LoginComponent.prototype.signUpToday = function (event) {
         event.preventDefault();
         this.router.navigate(['signup']);
+    };
+    LoginComponent.prototype.ngOnInit = function () {
+        var email = new forms_1.FormControl('', forms_1.Validators.required);
+        var password = new forms_1.FormControl('', forms_1.Validators.required);
+        this.loginForm = new forms_1.FormGroup({
+            email: email,
+            password: password
+        });
     };
     return LoginComponent;
 }());

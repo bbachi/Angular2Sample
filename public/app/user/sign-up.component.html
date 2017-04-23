@@ -3,25 +3,44 @@
         <div class="signup-container">
             <div class="row">
                 <div class="col-md-6 signup-text">
-                    <h1>Become an event planner or freelancer today!</h1>
-                    <h3>Plan an event and invite your friends. <br /> Become a freelancer for an event.
-                    </h3>
-                </div>
-                <div class="col-md-4 signup-form">
-                    <h3>It's free so join today!</h3>
-                    <form [formGroup]="signUpForm" autocomplete="off" novalidate (ngSubmit)="signUp(signUpForm.value)" method="post">
-                        <input [ngClass]= "{'error':!isUserValid}" formControlName="firstName" type="text" name="first-name" id="first-name" value="" placeholder="First Name">
-                        <input [ngClass]= "{'error':!isUserValid}" formControlName="lastName" type="text" name="last-name" id="last-name" value="" placeholder="Last Name">
-                        <input [ngClass]= "{'error':!isUserValid}" formControlName="email" type="text" name="email" id="email" value="" placeholder="Email">
-                        <input [ngClass]= "{'error':!isUserValid}" formControlName="password" type="password" name="password" id="password" value="" placeholder="Password">
-                        <input [ngClass]= "{'error':!isUserValid}" formControlName="confirmPassword" type="password" name="confirm-password" id="confirm-password" value="" placeholder="Confirm Password">
-                        <button type="submit" name="sign-up" id="sign-up" class="btn btn-1">sign up</button>
-                    </form>
-                    <p class="legal">By signing up, I agree to Rave Crate’s <a>terms of service</a>, <a>Privacy Policy</a>, and <a>cookie policy</a>.</p>
-                    <p class="legal">
-                        <a [routerLink]="['/createanevent']">Create Page</a> for Freelancer or Event Planner.
+                    <p>Become an event planner or </p>
+                    <p>freelancer today!</p>
+                    <p>Plan an event and invite your friends. <br /> Become a freelancer for an event.
                     </p>
                 </div>
+                <div class="col-md-4">
+                    <div class="row signupform">
+                        <h2>IT'S FREE SO JOIN TODAY!</h2>
+                        <form [formGroup]="signUpForm" id="signUpForm" autocomplete="off" novalidate (ngSubmit)="signUp(signUpForm.value)" method="post">
+                                <div class="input-group">
+                                <input id="email" type="text" class="form-control" formControlName="firstName" name="firstName" placeholder="First Name">
+                            </div>
+                                <div class="input-group">
+                                <input id="email" type="text" class="form-control" formControlName="lastName" name="lastName" placeholder="Last Name">
+                            </div>
+                                <div class="input-group">
+                                <input id="email" type="text" class="form-control" formControlName="email" name="email" placeholder="Email">
+                            </div>
+                                <div class="input-group">
+                                <input id="email" type="password" class="form-control" formControlName="password" name="password" placeholder="Password">
+                            </div>
+                                <div class="input-group">
+                                <input id="email" type="password" class="form-control" formControlName="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+                            </div>
+                            <div class="row centeralign">
+                                <button type="submit" class="btn btn-warning" id="signupbtn"  name="button">SIGN UP</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row legalterms">
+                        <p class="legal">By signing up, I agree to Rave Crate’s <a>terms of service</a>, <a>Privacy Policy</a>, and <a>cookie policy</a>.</p>
+                        <p class="legal">
+                            Create Page for Freelancer or Event Planner.
+                        </p>
+                    </div>
+                </div>
+                    
+             
             </div>
         </div>
     </section>

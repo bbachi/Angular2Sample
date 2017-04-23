@@ -14,6 +14,16 @@ export class EventService {
     private saveEventURL = '/resource/saveEvent';
     private getEventDtlsURL = '/resource/getEventDtls';
 
+    private event: any;
+
+    getEvent():any {
+        return this.event;
+    }
+
+    setEvent(evnt: any): void {
+        this.event = evnt;
+    }
+
     constructor(private http: Http) { }
 
     getEvents(address: Address, eventDate: string, searchItem: string): Observable<any> {

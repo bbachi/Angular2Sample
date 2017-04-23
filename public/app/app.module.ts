@@ -7,9 +7,12 @@ import { ForgotPasswordComponent, ForgotPasswordConfirmComponent } from './forgo
 import { ResetPasswordComponent } from './resetpassword/resetpassoword.component';
 import { HomeComponent } from './home/index';
 import { ComingsoonComponent } from './comingsoon/index';
+import {AuthGuard} from './auth-guard.service';
+import { UserService } from './_services/user.service.';
 
 //feature module imports
 import { EventsModule } from './events/events.module';
+import { CreateEventsModule } from './events/createEvent/create-event.module';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 
@@ -18,11 +21,11 @@ import { AppRoutingModule } from './app.router.module';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, 
-            SharedModule, EventsModule, UserModule, AppRoutingModule ],
+            SharedModule, EventsModule, CreateEventsModule, UserModule, AppRoutingModule ],
   declarations: [
     AppComponent, ComingsoonComponent,
     HomeComponent, ForgotPasswordComponent, ForgotPasswordConfirmComponent, ResetPasswordComponent],
   bootstrap: [ AppComponent ],
-  providers: []
+  providers: [AuthGuard, UserService],
 })
 export class AppModule { }

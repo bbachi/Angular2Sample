@@ -22,6 +22,12 @@ var EventService = (function () {
         this.saveEventURL = '/resource/saveEvent';
         this.getEventDtlsURL = '/resource/getEventDtls';
     }
+    EventService.prototype.getEvent = function () {
+        return this.event;
+    };
+    EventService.prototype.setEvent = function (evnt) {
+        this.event = evnt;
+    };
     EventService.prototype.getEvents = function (address, eventDate, searchItem) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });

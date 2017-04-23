@@ -8,7 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var create_events_component_1 = require("./create-events.component");
+var index_1 = require("./index");
+var auth_guard_service_1 = require("./../../auth-guard.service");
+var createEventsRoutes = [
+    { path: '', component: index_1.CreateEventsComponent, canActivate: [auth_guard_service_1.AuthGuard] },
+    { path: 'verify.htm', component: index_1.CreateEventVerifyComponent },
+    { path: 'confirm.htm', component: index_1.CreateEventConfirmComponent },
+];
 var CreateEventRoutingModule = (function () {
     function CreateEventRoutingModule() {
     }
@@ -16,9 +22,7 @@ var CreateEventRoutingModule = (function () {
 }());
 CreateEventRoutingModule = __decorate([
     core_1.NgModule({
-        imports: [router_1.RouterModule.forChild([
-                { path: '', component: create_events_component_1.CreateEventsComponent }
-            ])],
+        imports: [router_1.RouterModule.forChild(createEventsRoutes)],
         exports: [router_1.RouterModule]
     })
 ], CreateEventRoutingModule);

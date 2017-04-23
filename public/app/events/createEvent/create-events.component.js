@@ -26,9 +26,8 @@ var CreateEventsComponent = (function () {
         this.uploader = new ng2_file_upload_1.FileUploader({ url: '/resource/uploadEventImg' });
     }
     CreateEventsComponent.prototype.createAnEvent = function (formValues) {
-        var _this = this;
         console.log(formValues);
-        if (this.createEventForm.valid) {
+        if (!this.createEventForm.valid) {
             this.isFormValid = false;
             var event_1 = new event_model_1.Event();
             event_1 = formValues;
@@ -40,15 +39,8 @@ var CreateEventsComponent = (function () {
             address.state = event_1.state;
             address.zipcode = event_1.zipcode;
             event_1.address = address;
-            this.eventService.saveEvent(event_1).subscribe(function (event) {
-                if (null != event) {
-                    console.log('event saved successfully::::::' + event);
-                    _this.router.navigate(['event']);
-                }
-                else {
-                    console.log('user not validated for the::::' + formValues.email);
-                }
-            });
+            this.eventService.setEvent(event_1);
+            this.router.navigate(['verify.htm']);
         }
         else {
             console.log('event form invalid');

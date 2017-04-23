@@ -9,7 +9,7 @@ import { EventsRoutingModule } from './events-routing.module';
 
 @NgModule({
     imports: [ CommonModule, HttpModule, FormsModule, ReactiveFormsModule, MyDatePickerModule, AgmCoreModule.forRoot(
-    {apiKey: 'AIzaSyBZ0ppuSTjLo1HPsuSIrZv9UTJgan8i2Cw', libraries: ['places']}) ],
+    {apiKey: 'AIzaSyBZ0ppuSTjLo1HPsuSIrZv9UTJgan8i2Cw', libraries: ['places']}), EventsRoutingModule ],
     declarations: [EventsComponent, EventDetailComponent],
     exports: [EventsComponent, EventDetailComponent],
     providers: [ EventService ]

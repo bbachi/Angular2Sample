@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../model/user.service';
+import { UserService } from './../../_services/user.service.';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'rc-header',
@@ -11,12 +12,13 @@ export class HeaderComponent implements OnInit {
     showNav: boolean = false;
     userLoggedIn: boolean = false;
     
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService, private router: Router) {
     }
 
     logout(): void {
         localStorage.setItem('currentUser', null);
         this.userLoggedIn = !this.userLoggedIn;
+        this.router.navigate(['home']);
     }
 
     toggleMenu(): void {

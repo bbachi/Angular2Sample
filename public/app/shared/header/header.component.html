@@ -2,7 +2,7 @@
     <button id="menubutton c-button--slide-left" (click)="toggleMenu()" class="c-button"><img src="app/assets/images/logo.png" class="c-button-img">MENU</button>
     <div class="hdrmenukinks">
         <a [routerLink]="['/about']">ABOUT US</a>
-        <a [routerLink]="['/event']">EVENTS</a>
+        <a [routerLink]="['/event.htm']">EVENTS</a>
         <a [routerLink]="['/freelancer']">FREELANCERS</a>
         <a [routerLink]="['/comingsoon']">MY PROFILE</a>
     </div>
@@ -16,16 +16,16 @@
 <nav id="c-menu--slide-left" class="c-menu c-menu--slide-left" [ngClass]="{'is-active': showNav }">
 <div class="close-login">
     <button (click)="toggleMenu()" class="c-menu_close">&#10005;</button>
-    <a [routerLink]="['/login']" (click)="toggleMenu()" class="nav-login">LOG IN</a>
+    <a [routerLink]="['/login']" *ngIf="!userLoggedIn" (click)="toggleMenu()" class="nav-login">LOG IN</a>
 </div>
 <div class="nav-signup-div">
-    <a [routerLink]="['/signup']" (click)="toggleMenu()" class="nav-signup">SIGN UP</a>
+    <a [routerLink]="['/signup']" *ngIf="!userLoggedIn" (click)="toggleMenu()" class="nav-signup">SIGN UP</a>
 </div>
 <ul class="c-menu__items">
     <li (click)="toggleMenu()" class="c-menu__item nav-border-top"><a [routerLink]="['/home']" class="c-menu__link">HOME</a></li>
     <li (click)="toggleMenu()" class="c-menu__item"><a [routerLink]="['/about']" class="c-menu__link">ABOUT US</a></li>
-    <li (click)="toggleMenu()" class="c-menu__item"><a [routerLink]="['/event']" class="c-menu__link">EVENTS</a></li>
-    <li (click)="toggleMenu()" class="c-menu__item"><a [routerLink]="['/createanevent']" class="c-menu__link">CREATE AN EVENT</a></li>
+    <li (click)="toggleMenu()" class="c-menu__item"><a [routerLink]="['/event.htm']" class="c-menu__link">EVENTS</a></li>
+    <li (click)="toggleMenu()" class="c-menu__item"><a [routerLink]="['/createanevent.htm']" class="c-menu__link">CREATE AN EVENT</a></li>
     <li (click)="toggleMenu()" class="c-menu__item"><a [routerLink]="['/freelancer']" class="c-menu__link">FREELANCERS</a></li>
     <li (click)="toggleMenu()" class="c-menu__item"><a [routerLink]="['/createfreelancer']" class="c-menu__link">BE A FREELANCER</a></li>
     <li (click)="toggleMenu()" class="c-menu__item nav-border-bottom"><a [routerLink]="['/settings']" class="c-menu__link">SETTINGS</a></li>

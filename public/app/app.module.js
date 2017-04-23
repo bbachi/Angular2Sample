@@ -15,8 +15,11 @@ var index_1 = require("./forgotpassword/index");
 var resetpassoword_component_1 = require("./resetpassword/resetpassoword.component");
 var index_2 = require("./home/index");
 var index_3 = require("./comingsoon/index");
+var auth_guard_service_1 = require("./auth-guard.service");
+var user_service_1 = require("./_services/user.service.");
 //feature module imports
 var events_module_1 = require("./events/events.module");
+var create_event_module_1 = require("./events/createEvent/create-event.module");
 var shared_module_1 = require("./shared/shared.module");
 var user_module_1 = require("./user/user.module");
 //routing module
@@ -29,13 +32,13 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, http_1.HttpModule,
-            shared_module_1.SharedModule, events_module_1.EventsModule, user_module_1.UserModule, app_router_module_1.AppRoutingModule],
+            shared_module_1.SharedModule, events_module_1.EventsModule, create_event_module_1.CreateEventsModule, user_module_1.UserModule, app_router_module_1.AppRoutingModule],
         declarations: [
             app_component_1.AppComponent, index_3.ComingsoonComponent,
             index_2.HomeComponent, index_1.ForgotPasswordComponent, index_1.ForgotPasswordConfirmComponent, resetpassoword_component_1.ResetPasswordComponent
         ],
         bootstrap: [app_component_1.AppComponent],
-        providers: []
+        providers: [auth_guard_service_1.AuthGuard, user_service_1.UserService],
     })
 ], AppModule);
 exports.AppModule = AppModule;

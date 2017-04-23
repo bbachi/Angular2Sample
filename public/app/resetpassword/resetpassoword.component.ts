@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { UserService } from '../shared/model/user.service';
+import { UserService } from './../_services/user.service.';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import 'rxjs/add/operator/switchMap';
 

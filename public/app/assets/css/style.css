@@ -1232,6 +1232,7 @@ video {
   outline-color: white;
   cursor: none;
 }
+/*
 .login-form button {
   margin: 0 auto;
   display: block;
@@ -1246,6 +1247,7 @@ video {
   background-color: #fff;
   color: #1E2264;
 }
+*/
 .login-form .login-checkbox {
   display: block;
   text-align: center;
@@ -1391,4 +1393,23 @@ video {
 
 .sitebgcolorwht {
   background-color: #ffffff;
+}
+
+.right{
+  float:right;
+  clear:both;
+}
+
+.left{
+  float:left;
+  clear:both;
+}
+
+.displayinline{
+  display: inline;
+}
+
+.bgbtncolor{
+   background-color: #e9bf03 !important;
+   border-color: #e9bf03 !important;
 }

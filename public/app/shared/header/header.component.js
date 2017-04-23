@@ -10,16 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var user_service_1 = require("../model/user.service");
+var user_service_1 = require("./../../_services/user.service.");
+var router_1 = require("@angular/router");
 var HeaderComponent = (function () {
-    function HeaderComponent(userService) {
+    function HeaderComponent(userService, router) {
         this.userService = userService;
+        this.router = router;
         this.showNav = false;
         this.userLoggedIn = false;
     }
     HeaderComponent.prototype.logout = function () {
         localStorage.setItem('currentUser', null);
         this.userLoggedIn = !this.userLoggedIn;
+        this.router.navigate(['home']);
     };
     HeaderComponent.prototype.toggleMenu = function () {
         console.log('menu link clicked:::' + this.showNav);
@@ -41,7 +44,7 @@ HeaderComponent = __decorate([
         templateUrl: 'app/shared/header/header.component.html',
         styleUrls: ['app/shared/header/header.component.css']
     }),
-    __metadata("design:paramtypes", [user_service_1.UserService])
+    __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router])
 ], HeaderComponent);
 exports.HeaderComponent = HeaderComponent;
 //# sourceMappingURL=header.component.js.map

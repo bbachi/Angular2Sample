@@ -11,7 +11,8 @@ var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
 var mydatepicker_1 = require("mydatepicker");
 var http_1 = require("@angular/http");
-var index_1 = require("./../index");
+var index_1 = require("./index");
+var event_servcie_1 = require("./../shared/event.servcie");
 var create_events_routing_module_1 = require("./create-events-routing.module");
 var ng2_file_upload_1 = require("ng2-file-upload");
 var CreateEventsModule = (function () {
@@ -22,9 +23,9 @@ var CreateEventsModule = (function () {
 CreateEventsModule = __decorate([
     core_1.NgModule({
         imports: [common_1.CommonModule, http_1.HttpModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, mydatepicker_1.MyDatePickerModule, create_events_routing_module_1.CreateEventRoutingModule],
-        declarations: [index_1.CreateEventsComponent, ng2_file_upload_1.FileSelectDirective],
-        exports: [index_1.CreateEventsComponent],
-        providers: [index_1.EventService]
+        declarations: [index_1.CreateEventsComponent, index_1.CreateEventVerifyComponent, index_1.CreateEventConfirmComponent, index_1.BreadCrumbComponent, ng2_file_upload_1.FileSelectDirective],
+        exports: [index_1.CreateEventsComponent, index_1.CreateEventVerifyComponent, index_1.CreateEventConfirmComponent],
+        providers: [event_servcie_1.EventService]
     })
 ], CreateEventsModule);
 exports.CreateEventsModule = CreateEventsModule;

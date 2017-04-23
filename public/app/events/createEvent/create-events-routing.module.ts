@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CreateEventsComponent } from './create-events.component';
+import { CreateEventsComponent, CreateEventVerifyComponent,CreateEventConfirmComponent } from './index';
+import { AuthGuard } from  './../../auth-guard.service';
+
+const createEventsRoutes: Routes = [
+    { path: '', component: CreateEventsComponent, canActivate: [AuthGuard]},
+    { path: 'verify.htm', component: CreateEventVerifyComponent },
+    { path: 'confirm.htm', component: CreateEventConfirmComponent },
+  ];
+
 
 @NgModule({
-  imports: [RouterModule.forChild([
-    { path: '', component: CreateEventsComponent }
-  ])],
+  imports: [RouterModule.forChild(createEventsRoutes)],
   exports: [RouterModule]
 })
 export class CreateEventRoutingModule { }

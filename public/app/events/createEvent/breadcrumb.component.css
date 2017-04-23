@@ -1,0 +1,32 @@
+
+.bccreateevent{
+    padding: 5px 3% 5px 20%;
+    width:100%;
+}
+
+.rcbreadcrumb li{
+    display: inline-block;
+    width: 20%;
+    border: 1px solid #23527c;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    background-color: #23527c;
+    font-size: 15px;
+    padding: 5px 15px;
+    margin-right: 3%;
+}
+
+.rcbreadcrumb li:nth-child(even) {
+    width: 25px;
+	height: 25px;
+    text-align: center;
+    padding: 5px 15px;
+    -moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+}
+
+.rcbreadcrumb{
+    margin-right:3%;
+}

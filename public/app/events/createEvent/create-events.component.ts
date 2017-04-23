@@ -25,7 +25,7 @@ export class CreateEventsComponent implements OnInit {
 
     createAnEvent(formValues: any) {
         console.log(formValues);
-        if (this.createEventForm.valid) {
+        if (!this.createEventForm.valid) {
             this.isFormValid = false;
             let event: Event = new Event();
             event = <Event> formValues;
@@ -37,14 +37,8 @@ export class CreateEventsComponent implements OnInit {
             address.state = event.state;
             address.zipcode = event.zipcode;
             event.address = address;
-            this.eventService.saveEvent(event).subscribe((event: Event) => {
-                if (null != event) {
-                    console.log('event saved successfully::::::' + event);
-                    this.router.navigate(['event']);
-                } else {
-                    console.log('user not validated for the::::' + formValues.email);
-                }
-            });
+            this.eventService.setEvent(event);
+            this.router.navigate(['verify.htm']);
         }else{
             console.log('event form invalid');
             this.isFormValid = true;

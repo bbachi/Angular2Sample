@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var user_model_1 = require("../shared/model/user.model");
-var user_service_1 = require("../shared/model/user.service");
+var user_model_1 = require("./../_model/user.model");
+var user_service_1 = require("./../_services/user.service.");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var SignUpComponent = (function () {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../shared/model/user.service';
+import { UserService } from './../_services/user.service.';
 
 @Component({
     selector: 'rc-fp-confirm',

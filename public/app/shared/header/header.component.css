@@ -41,3 +41,7 @@ button{
     box-shadow: 0 20px 20px -20px #88cc00;
 }
 
+.btn-warning{
+    background-color: #e9bf03;
+}
+
