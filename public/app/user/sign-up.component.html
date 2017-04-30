@@ -11,20 +11,43 @@
                 <div class="col-md-4">
                     <div class="row signupform">
                         <h2>IT'S FREE SO JOIN TODAY!</h2>
-                        <form [formGroup]="signUpForm" id="signUpForm" autocomplete="off" novalidate (ngSubmit)="signUp(signUpForm.value)" method="post">
-                                <div class="input-group">
+                        <form [formGroup]="user" id="signUpForm" autocomplete="off" novalidate (ngSubmit)="signUp(user)">
+                            <div class="input-group errmsg" *ngIf="isFormInvalid && !user.touched">
+                                Please enter valid fields.
+                            </div>
+                            <div class="input-group col-md-12 col-xs-12 col-lg-12">
+                                <div class="errmsg"
+                                    *ngIf="user.get('firstName').hasError('required') && user.get('firstName').touched">
+                                    * first Name is required
+                                </div>
                                 <input id="email" type="text" class="form-control" formControlName="firstName" name="firstName" placeholder="First Name">
                             </div>
-                                <div class="input-group">
+                                <div class="input-group col-md-12 col-xs-12 col-lg-12">
+                                <div class="errmsg"
+                                    *ngIf="user.get('lastName').hasError('required') && user.get('lastName').touched">
+                                    * last Name is required
+                                </div>
                                 <input id="email" type="text" class="form-control" formControlName="lastName" name="lastName" placeholder="Last Name">
                             </div>
-                                <div class="input-group">
+                                <div class="input-group col-md-12 col-xs-12 col-lg-12">
+                                <div class="errmsg"
+                                    *ngIf="user.get('email').hasError('required') && user.get('email').touched">
+                                    * email is required
+                                </div>
                                 <input id="email" type="text" class="form-control" formControlName="email" name="email" placeholder="Email">
                             </div>
-                                <div class="input-group">
+                                <div class="input-group col-md-12 col-xs-12 col-lg-12">
+                                <div class="errmsg"
+                                    *ngIf="user.get('password').hasError('required') && user.get('password').touched">
+                                    * password is required
+                                </div>
                                 <input id="email" type="password" class="form-control" formControlName="password" name="password" placeholder="Password">
                             </div>
-                                <div class="input-group">
+                                <div class="input-group col-md-12 col-xs-12 col-lg-12">
+                                <div class="errmsg"
+                                    *ngIf="user.get('confirmPassword').hasError('required') && user.get('confirmPassword').touched">
+                                    * please enter same password again
+                                </div>
                                 <input id="email" type="password" class="form-control" formControlName="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
                             </div>
                             <div class="row centeralign">

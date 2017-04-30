@@ -100,7 +100,9 @@ RestUtil.prototype.response.getEvents = function(res) {
 
 RestUtil.prototype.request.getEventDtls = function(req) {
     LOG.info('get event details Request object:::::::'+JSON.stringify(req.body.requestObj));
-    var reqObj = req.body.requestObj;
+    var reqObj = {};
+    reqObj.appName = "WEB";
+    reqObj.eventId = req.body.eventId;
     return reqObj;
 }
 
@@ -108,8 +110,11 @@ RestUtil.prototype.response.getEventDtls = function(res) {
     var resObj = {eventDtlsFound:'N'};
     LOG.info('get event details Response object:::::::'+JSON.stringify(res));
     if(res.dataAvailable){
-        resObj.eventDtlsFound = 'Y';
-        resObj.eventDtls = res.eventDtls;
+        var resObj = {eventDtlsFound:'Y'};
+        var eventDetail = {};
+        eventDetail.event = res.eventDetail.event;
+        eventDetail.attendees = [];
+        resObj.eventDetail = eventDetail;
     }else{
         resObj.errorMessage = res.errorMessage;
     }
@@ -184,6 +189,56 @@ RestUtil.prototype.response.resetPassword = function(res){
 }
 
 
+/* My profile request and responses  start*/
+
+RestUtil.prototype.request.myProfile = function(req, user){
+    var reqObj = {};
+    reqObj.appName = "WEB";
+    reqObj.userId = user.userId;
+    LOG.info('my profile Request object:::::::'+JSON.stringify(reqObj));
+    return reqObj; 
+}
+
+RestUtil.prototype.response.myProfile = function(res,userType){
+    var resObj = {dataAvailable:false};
+    LOG.info('my profile Response object:::::::'+JSON.stringify(res));
+    if(res.dataAvailable){
+        resObj.dataAvailable = true;
+        if(userType == 'U'){
+            resObj.user = res.user;
+        }else if(userType == 'F'){
+            resObj.freelancer = res.freelancer;
+            resObj.upcomingEvents = res.upcomingEvents;
+            resObj.oldEvents = res.oldEvents;
+        }
+    }else{
+        resObj.errorMessage = res.errorMessage;
+    }
+    return resObj;
+}
+
+RestUtil.prototype.request.updateProfile = function(req, user){
+    var reqObj = {};
+    reqObj.appName = "WEB";
+    reqObj.user = req.body.user;
+    reqObj.userType = user.type;
+    reqObj.userId = user.userId;
+    LOG.info('update profile Request object:::::::'+JSON.stringify(reqObj));
+    return reqObj;
+}
+
+RestUtil.prototype.response.updateProfile = function(res){
+    var resObj = {userUpdated:'N'};
+    LOG.info('validateUser Response object:::::::'+JSON.stringify(res));
+    if(res.dataAvailable){
+        resObj.userUpdated = 'Y';
+    }else{
+        resObj.errorMessage = res.errorMessage;
+    }
+    return resObj;
+}
+
+/* My profile request and responses  end*/
 
 RestUtil.prototype.urlBin = {
         AuthAccessToken: baseURL+"oauth/token?grant_type=password&username=rc&password=rc9999",
@@ -202,7 +257,11 @@ RestUtil.prototype.urlBin = {
         GetFreelancerDetails: baseURL+"freelancer/detail",
 
         ResetPasswordAndLogin: baseURL+"password/reset",
-        GetTxnIdForResetPassword: baseURL+"password/forgot"
+        GetTxnIdForResetPassword: baseURL+"password/forgot",
+
+        GetFreelancerProfile: baseURL+"myprofile/freelancer",
+        GetUserProfile: baseURL+"myprofile/user",
+        UpdateProfile: baseURL+"myprofile/update"
     }
 
 module.exports = new RestUtil();

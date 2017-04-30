@@ -3,93 +3,118 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <h3><img src="app\assets\images\events\eventsheads.png"> Verification</h3>
-             <form id="createEventForm" [formGroup]="createEventForm" autocomplete="off" method="post">
+             <form id="createEventForm" autocomplete="off" method="post">
                   <div class="form-group row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label class="form-control-label">Name of Event:</label>
-                        
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3 formval">
+                        {{event.title}}
+                    </div>
+                    <div class="col-md-3">
                         <label class="form-control-label">Event Venue:</label>
-                       
+                    </div>
+                    <div class="col-md-3 formval">
+                        {{event.venue}}
                     </div>
                  </div>
                  <div class="form-group row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label class="form-control-label">Event Host:</label>
-                        
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3 formval">
+                        {{event.host}}
+                    </div>
+                    <div class="col-md-3">
                         <label class="form-control-label">Street Number:</label>
-                       
+                    </div>
+                    <div class="col-md-3 formval">
+                        {{event.address.streetNumber}}
                     </div>
                  </div>
                  <div class="form-group row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label class="form-control-label">Street Name:</label>
-                        
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3 formval">
+                        {{event.address.streetName}}
+                    </div>
+                    <div class="col-md-3">
                         <label class="form-control-label">City:</label>
-                        
+                    </div>
+                    <div class="col-md-3 formval">
+                        {{event.address.city}}
                     </div>
                  </div>
                  <div class="form-group row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label class="form-control-label">State:</label>
-                         
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3 formval">
+                        {{event.address.state}}
+                    </div>
+                    <div class="col-md-3">
                         <label class="form-control-label">Zip Code:</label>
-                       
+                    </div>
+                    <div class="col-md-3 formval">
+                        {{event.zaddress.ipcode}}
                     </div>
                  </div>
                  <div class="form-group row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label class="form-control-label">Date:</label>
-                      
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label class="form-control-label">Start Time (Military Time):</label>
-                       
+                    </div>
+                    <div class="col-md-3 formval">
+                        {{event.startTimeHour}}
                     </div>
                  </div>
                  <div class="form-group row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label class="form-control-label">Minute:</label>
-                        
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3 formval">
+                        {{event.startTimeMin}}
+                    </div>
+                    <div class="col-md-3">
                         <label class="form-control-label">Description:</label>
-                        
+                    </div>
+                    <div class="col-md-3 formval">
+                        {{event.description}}
                     </div>
                  </div>
                  <div class="form-group row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label class="form-control-label">Type of Event:</label>
-                       
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3 formval">
+                        {{event.type}}
+                    </div>
+                    <div class="col-md-3">
                         <label class="form-control-label">Fee:</label>
-                       
+                    </div>
+                    <div class="col-md-3 formval">
+                        {{event.fee}}
                     </div>
                  </div>
                  <div class="form-group row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label class="form-control-label">Contact Phone:</label>
-                         
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3 formval">
+                        {{event.phone}}
+                    </div>
+                    <div class="col-md-3">
                         <label class="form-control-label">Email:</label>
-                        
+                    </div>
+                    <div class="col-md-3 formval">
+                        {{event.email}}
                     </div>
                  </div>
                  <div class="form-group row">
-                    <div class="col-md-6">
-                        <label class="form-control-label">Add Image</label>
-                        
-                    </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <button type="submit" (click)="createEventSubmit()" class="btn btn-warning" id="create-event">Submit</button>
                     </div>
                  </div>

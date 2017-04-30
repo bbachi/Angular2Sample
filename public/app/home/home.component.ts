@@ -2,12 +2,20 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { MapsAPILoader } from 'angular2-google-maps/core';
 
+import { fadeInAnimation } from '../_animations/index';
+
 declare var google: any;
 
 @Component({
     selector: 'rc-home',
     templateUrl: 'app/home/home.component.html',
-    styleUrls: ['app/home/home.component.css']
+    styleUrls: ['app/home/home.component.css'],
+
+    //make fade in animation avilable to this component
+    animations: [fadeInAnimation],
+
+    //attach the fade in animation to the host (root) element of this component
+    host: { '[@fadeInAnimation]': '' }
 })
 export class HomeComponent implements OnInit {
     autoComplete: any;

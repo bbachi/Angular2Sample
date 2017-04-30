@@ -24,7 +24,7 @@ EventsModule = __decorate([
         imports: [common_1.CommonModule, http_1.HttpModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, mydatepicker_1.MyDatePickerModule, core_module_1.AgmCoreModule.forRoot({ apiKey: 'AIzaSyBZ0ppuSTjLo1HPsuSIrZv9UTJgan8i2Cw', libraries: ['places'] }), events_routing_module_1.EventsRoutingModule],
         declarations: [index_1.EventsComponent, index_1.EventDetailComponent],
         exports: [index_1.EventsComponent, index_1.EventDetailComponent],
-        providers: [index_1.EventService]
+        providers: []
     })
 ], EventsModule);
 exports.EventsModule = EventsModule;

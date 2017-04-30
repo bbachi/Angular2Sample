@@ -1,0 +1,1 @@
+export { PaymentComponent } from './payment/payment.component';

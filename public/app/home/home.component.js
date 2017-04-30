@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var core_2 = require("angular2-google-maps/core");
+var index_1 = require("../_animations/index");
 var HomeComponent = (function () {
     function HomeComponent(router, loader, zone) {
         this.router = router;
@@ -50,7 +51,11 @@ HomeComponent = __decorate([
     core_1.Component({
         selector: 'rc-home',
         templateUrl: 'app/home/home.component.html',
-        styleUrls: ['app/home/home.component.css']
+        styleUrls: ['app/home/home.component.css'],
+        //make fade in animation avilable to this component
+        animations: [index_1.fadeInAnimation],
+        //attach the fade in animation to the host (root) element of this component
+        host: { '[@fadeInAnimation]': '' }
     }),
     __metadata("design:paramtypes", [router_1.Router, core_2.MapsAPILoader, core_1.NgZone])
 ], HomeComponent);

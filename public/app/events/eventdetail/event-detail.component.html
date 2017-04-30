@@ -1,6 +1,6 @@
 
 
-<div class="container-fluid" style="background-color: #17B2EF;">
+<div class="container-fluid evendetail" style="background-color: #17B2EF;">
     <!-- <div> -->
     <div class="col-lg-4 col-md-6 col-sm-12" style="text-align: center">
 
@@ -53,30 +53,47 @@
         <br>
     </div>
     <div class="col-lg-4 col-md-6 col-sm-12" style="text-align: center;">
-        <img src="app/assets/images/events/magic.jpg" alt="" style="height: 250px; width: 400px; border: 5px solid black;" />
-        <h1>Inception ft. Robin Schulz</h1>
-        <a href="http://maps.google.com/?q= 618 S Spring St, Los Angeles CA 90014">
-            <p style="color: black;">618 S Spring St, Los Angeles CA 90014</p>
-        </a>
-        <p><b>Venue:</b> Exchange LA</p>
-        <p><b>Hosted by:</b> Exchange LA</p>
-        <p><b>When:</b> 2016-11-19 10:00:00 PM</p>
-        <p><b>Description:</b> Saturday, November 19th, 2016, Insomniac presents Inception featuring Robin Schulz. For bottle service information, birthday specials and more, please call (213) 444-3388 or email vip@exchangela.com</p>
-        <p><b>Type:</b> Public</p>
-        <p><b>Fee:</b> $15 Pre-sale/$20 At the door</p>
-        <p><b>Phone:</b> (213) 444-3388</p>
-        <a href="mailto:vip@exchangela.com">
-            <p style="color: black;"><b>Email:</b> vip@exchangela.com</p>
-        </a>
-        <br>
+        <div *ngIf="eventDetail">
+            <img src="app/assets/images/events/magic.jpg" alt="" style="height: 250px; width: 400px; border: 5px solid black;" />
+            <h1>{{eventDetail.event.title}}</h1>
+            <a href="http://maps.google.com/?q= 618 S Spring St, Los Angeles CA 90014">
+                <p style="color: black;">{{eventDetail.event.address.streetNumber}} {{eventDetail.event.address.streetName}}
+                    {{eventDetail.event.address.city}},  {{eventDetail.event.address.state}} {{eventDetail.event.address.zipcode}}
+                </p>
+            </a>
+            <p><b>Venue:</b> {{eventDetail.event.venue}}</p>
+            <p><b>Hosted by:</b> {{eventDetail.event.host}}</p>
+            <p><b>When:</b> {{eventDetail.event.date}} {{eventDetail.event.startTimeHour}}:{{eventDetail.event.startTimeMin}}:00 PM</p>
+            <p><b>Description:</b> {{eventDetail.event.description}}</p>
+            <p><b>Type:</b> {{eventDetail.event.type}}</p>
+            <p><b>Fee:</b> {{eventDetail.event.fee}}</p>
+            <p><b>Phone:</b> {{eventDetail.event.phone}}</p>
+            <a href="mailto:vip@exchangela.com">
+                <p style="color: black;"><b>Email:</b> {{eventDetail.event.email}}</p>
+            </a>
+            <br>
+        </div>
     </div>
     <div class="col-lg-4 col-md-12 col-sm-12" style="text-align: center">
-        <a href="#">
-            <img src="http://www.bigfunkidsfest.com/images/involved-icon-tix.png" alt="" />
-            <h4>Buy Tickets Here</h4>
-        </a>
-        <div id="map" style="height: 50vh; width: 100%; border-radius: 20px;"></div>
-        <br>
+       <img src="http://www.bigfunkidsfest.com/images/involved-icon-tix.png" alt="" />
+        <div class="buyticksbtn">
+            <button type="submit" (click)="buyTicketsHere()" class="btn btn-warning" id="buytickets"  name="button">Buy Tickets Here</button>
+        </div>
+        <div *ngIf="buyticketsClicked" class ="paymentbox">
+            <h4>Please select payment type and continue.</h4>
+            <div class="radio">
+                <label><input type="radio" name="payoption">Payment Methods</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="payoption">Credit Card</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="payoption">Pay Pal</label>
+            </div>
+            <div class="paycontbtn">
+                <button type="submit" (click)="buyTickets()" class="btn btn-warning" id="buytickets"  name="button">Continue</button>
+            </div>
+        </div>
     </div>
 
     <!-- </div> -->

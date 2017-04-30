@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyDatePickerModule } from 'mydatepicker';
 import { AgmCoreModule } from 'angular2-google-maps/core/core-module';
 import { HttpModule } from '@angular/http';
-import { EventsComponent, EventDetailComponent, EventService} from './index';
+import { EventsComponent, EventDetailComponent } from './index';
 import { EventsRoutingModule } from './events-routing.module';
 
 @NgModule({
@@ -12,6 +12,6 @@ import { EventsRoutingModule } from './events-routing.module';
     {apiKey: 'AIzaSyBZ0ppuSTjLo1HPsuSIrZv9UTJgan8i2Cw', libraries: ['places']}), EventsRoutingModule ],
     declarations: [EventsComponent, EventDetailComponent],
     exports: [EventsComponent, EventDetailComponent],
-    providers: [ EventService ]
+    providers: [ ]
 })
 export class EventsModule { }

@@ -16,11 +16,13 @@ var CreateEventVerifyComponent = (function () {
     function CreateEventVerifyComponent(route, router, eventService) {
         this.router = router;
         this.eventService = eventService;
-        this.event = this.eventService.getEvent();
-        console.log(JSON.stringify(this.event));
     }
     CreateEventVerifyComponent.prototype.createEventSubmit = function (event) {
         this.router.navigate(['confirm.htm']);
+    };
+    CreateEventVerifyComponent.prototype.ngOnInit = function () {
+        this.event = this.eventService.getEvent();
+        console.log(JSON.stringify(this.event));
     };
     return CreateEventVerifyComponent;
 }());

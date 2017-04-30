@@ -1,24 +1,32 @@
 
 <div class="container-fluid sitebgcolor contactus">
 
-    <h1>Contact Us</h1>
-    <form [formGroup]="contactUsForm" autocomplete="off" (ngSubmit)="contactUs(contactUsForm.value)" novalidate>
-        <div class="form-vertical form-group row">
-            <label for="inputEmail3" class="col-sm-offset-2 col-sm-2 form-control-label">Your Email</label>
-            <div class="col-sm-4">
-                <input type="email" [ngClass]= "{'error': !isFormValid}" class="form-control" formControlName="email" id="inputEmail" placeholder="Please enter your email address">
+    <div class="contactushead">
+        <span class="glyphicon glyphicon-phone-alt"></span><span>CONTACT US</span>
+    </div>
+    <div class="row contactusbox">
+        <h2>Contact Us</h2>
+        <form [formGroup]="contactUsForm" id="loginform" autocomplete="off" (ngSubmit)="contactUs(contactUsForm.value)" novalidate>
+            <div class="input-group col-md-12 col-xs-12">
+                <input id="name" [ngClass]= "{'error': !isFormValid}" type="text" class="form-control" formControlName="name" name="name" placeholder="Name">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-offset-2 col-sm-2 form-control-label">Content</label>
-            <div class="col-sm-4">
-                <textarea class="form-control" [ngClass]= "{'error': !isFormValid}" id="emailTextarea" formControlName="description" style="height: 40vh" rows="3" placeholder="Please enter your comment/question/concern here"></textarea>
+            <div class="input-group col-md-12 col-xs-12">
+                <input id="email" [ngClass]= "{'error': !isFormValid}" type="text" class="form-control" formControlName="email" name="email" placeholder="Please enter your email address">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span> 
             </div>
-        </div>
-        <br>
-        <div class="contactussubmitbtn">
-            <button type="submit" class="btn btn-lg btn-primary">Send</button>
-        </div>
-    </form>
+            <div class="input-group col-md-12 col-xs-12">
+                <input id="phNumber" [ngClass]= "{'error': !isFormValid}" type="text" class="form-control" formControlName="phoneNumber" name="phoneNumber" placeholder="Phone">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span> 
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <textarea class="form-control" [ngClass]= "{'error': !isFormValid}" id="emailTextarea" formControlName="description" placeholder="Please enter your comment/question/concern here"></textarea>
+            </div>
+            
+            <div class="contactussubmitbtn">
+                <button type="submit" class="btn btn-warning" id="contactsend"  name="button">Send</button>
+            </div>
+        </form>
+    </div>
 </div>
     

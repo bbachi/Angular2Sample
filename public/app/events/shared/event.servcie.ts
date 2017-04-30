@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Event } from './event.model';
+import { Event, EventDetail } from './../index';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Address } from './../../shared/model/address.model';
@@ -14,14 +14,17 @@ export class EventService {
     private saveEventURL = '/resource/saveEvent';
     private getEventDtlsURL = '/resource/getEventDtls';
 
-    private event: any;
+    private event: Event;
 
-    getEvent():any {
+    getEvent(): Event {
+        console.log('returning event:::::'+JSON.stringify(this.event));
         return this.event;
     }
 
-    setEvent(evnt: any): void {
+    setEvent(evnt: Event): void {
+        console.log('setting event:::::'+JSON.stringify(evnt));
         this.event = evnt;
+        console.log('setting event:::::'+JSON.stringify(evnt));
     }
 
     constructor(private http: Http) { }
@@ -45,6 +48,18 @@ export class EventService {
             .do(data => console.log('save event response::::' + JSON.stringify(data)))
             .catch(this.handleError);
     }
+
+
+    getEventDetails(eventId: string): Observable<EventDetail> {
+        let headers = new Headers({'Content-Type' : 'application/json'});
+        let options = new RequestOptions({headers: headers});
+        let requestObject = {eventId: eventId};
+        return this.http.post(this.getEventDtlsURL, JSON.stringify(requestObject), options)
+            .map((response: Response) => <any> response.json())
+            .do(data => {console.log('event details response::::' + JSON.stringify(data))})
+            .catch(this.handleError);
+    }
+
 
     private handleError(error: Response) {
         console.log('Error with http request:::::' + error.json);

@@ -4,3 +4,5 @@ export { EventDetailComponent } from './eventdetail/event-detail.component';
 export { EventService } from './shared/event.servcie';
 export * from './shared/address.model';
 export * from './shared/event.model';
+export * from './shared/eventdetail.model';
+export * from './shared/attendee.model';

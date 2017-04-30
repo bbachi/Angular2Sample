@@ -18,19 +18,22 @@ var SignUpComponent = (function () {
     function SignUpComponent(userService, router) {
         this.userService = userService;
         this.router = router;
+        this.isFormInvalid = false;
         this.userLoggedIn = new core_1.EventEmitter();
     }
-    SignUpComponent.prototype.signUp = function (formValues) {
+    SignUpComponent.prototype.signUp = function (_a) {
         var _this = this;
-        console.log(formValues);
+        var value = _a.value, valid = _a.valid;
+        console.log(value, valid);
+        this.isFormInvalid = false;
         var user = new user_model_1.User();
-        user = formValues;
-        if (this.signUpForm.valid) {
+        user = value;
+        if (this.user.valid) {
             this.userService.signUpUser(user).subscribe(function (resp) {
                 console.log('user from the service:::::::' + user);
                 if (null != user && resp.userSaved === 'Y') {
                     _this.userLoggedIn.emit(true);
-                    _this.router.navigate(['event']);
+                    _this.router.navigate(['event.htm']);
                 }
                 else {
                     _this.userLoggedIn.emit(false);
@@ -39,6 +42,7 @@ var SignUpComponent = (function () {
             });
         }
         else {
+            this.isFormInvalid = true;
             this.userLoggedIn.emit(false);
             console.log('sign up form invalidated:::');
         }
@@ -49,7 +53,7 @@ var SignUpComponent = (function () {
         var email = new forms_1.FormControl('', forms_1.Validators.required);
         var password = new forms_1.FormControl('', forms_1.Validators.required);
         var confirmPassword = new forms_1.FormControl('', forms_1.Validators.required);
-        this.signUpForm = new forms_1.FormGroup({
+        this.user = new forms_1.FormGroup({
             firstName: firstName,
             lastName: lastName,
             email: email,

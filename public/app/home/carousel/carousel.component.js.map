@@ -1,0 +1,1 @@
+{"version":3,"file":"carousel.component.js","sourceRoot":"","sources":["carousel.component.ts"],"names":[],"mappings":";;;;;;;;AAAA,sCAA0C;AAQ1C,IAAa,iBAAiB;IAA9B;IAAiC,CAAC;IAAD,wBAAC;AAAD,CAAC,AAAlC,IAAkC;AAArB,iBAAiB;IAL7B,gBAAS,CAAC;QACP,QAAQ,EAAE,kBAAkB;QAC5B,WAAW,EAAE,2CAA2C;QACxD,SAAS,EAAE,CAAC,0CAA0C,CAAC;KAC1D,CAAC;GACW,iBAAiB,CAAI;AAArB,8CAAiB"}

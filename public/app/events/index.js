@@ -13,4 +13,6 @@ var event_servcie_1 = require("./shared/event.servcie");
 exports.EventService = event_servcie_1.EventService;
 __export(require("./shared/address.model"));
 __export(require("./shared/event.model"));
+__export(require("./shared/eventdetail.model"));
+__export(require("./shared/attendee.model"));
 //# sourceMappingURL=index.js.map

@@ -18,8 +18,8 @@ var UserRoutingModule = (function () {
 UserRoutingModule = __decorate([
     core_1.NgModule({
         imports: [router_1.RouterModule.forChild([
-                { path: 'login', component: login_component_1.LoginComponent },
-                { path: 'signup', component: sign_up_component_1.SignUpComponent }
+                { path: 'login.htm', component: login_component_1.LoginComponent },
+                { path: 'signup.htm', component: sign_up_component_1.SignUpComponent }
             ])],
         exports: [router_1.RouterModule]
     })

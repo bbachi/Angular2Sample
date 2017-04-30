@@ -23,10 +23,13 @@ var EventService = (function () {
         this.getEventDtlsURL = '/resource/getEventDtls';
     }
     EventService.prototype.getEvent = function () {
+        console.log('returning event:::::' + JSON.stringify(this.event));
         return this.event;
     };
     EventService.prototype.setEvent = function (evnt) {
+        console.log('setting event:::::' + JSON.stringify(evnt));
         this.event = evnt;
+        console.log('setting event:::::' + JSON.stringify(evnt));
     };
     EventService.prototype.getEvents = function (address, eventDate, searchItem) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
@@ -44,6 +47,15 @@ var EventService = (function () {
         return this.http.post(this.saveEventURL, JSON.stringify(requestObject), options)
             .map(function (response) { return response.json(); })
             .do(function (data) { return console.log('save event response::::' + JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    EventService.prototype.getEventDetails = function (eventId) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        var requestObject = { eventId: eventId };
+        return this.http.post(this.getEventDtlsURL, JSON.stringify(requestObject), options)
+            .map(function (response) { return response.json(); })
+            .do(function (data) { console.log('event details response::::' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     EventService.prototype.handleError = function (error) {

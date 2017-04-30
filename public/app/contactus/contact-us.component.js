@@ -41,9 +41,13 @@ var ContactUsComponent = (function () {
     ContactUsComponent.prototype.ngOnInit = function () {
         var email = new forms_1.FormControl('', forms_1.Validators.required);
         var description = new forms_1.FormControl('', forms_1.Validators.required);
+        var phoneNumber = new forms_1.FormControl('', forms_1.Validators.required);
+        var name = new forms_1.FormControl('', forms_1.Validators.required);
         this.contactUsForm = new forms_1.FormGroup({
             email: email,
-            description: description
+            description: description,
+            phoneNumber: phoneNumber,
+            name: name
         });
     };
     return ContactUsComponent;

@@ -4,7 +4,7 @@ import { CreateEventsComponent, CreateEventVerifyComponent,CreateEventConfirmCom
 import { AuthGuard } from  './../../auth-guard.service';
 
 const createEventsRoutes: Routes = [
-    { path: '', component: CreateEventsComponent, canActivate: [AuthGuard]},
+    { path: 'createanevent.htm', component: CreateEventsComponent, canActivate: [AuthGuard]},
     { path: 'verify.htm', component: CreateEventVerifyComponent },
     { path: 'confirm.htm', component: CreateEventConfirmComponent },
   ];

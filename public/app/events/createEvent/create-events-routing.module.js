@@ -11,7 +11,7 @@ var router_1 = require("@angular/router");
 var index_1 = require("./index");
 var auth_guard_service_1 = require("./../../auth-guard.service");
 var createEventsRoutes = [
-    { path: '', component: index_1.CreateEventsComponent, canActivate: [auth_guard_service_1.AuthGuard] },
+    { path: 'createanevent.htm', component: index_1.CreateEventsComponent, canActivate: [auth_guard_service_1.AuthGuard] },
     { path: 'verify.htm', component: index_1.CreateEventVerifyComponent },
     { path: 'confirm.htm', component: index_1.CreateEventConfirmComponent },
 ];

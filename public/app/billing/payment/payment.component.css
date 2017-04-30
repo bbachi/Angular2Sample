@@ -1,0 +1,109 @@
+em{
+    color: #E05C65;
+    padding-left: 10px;
+}
+
+.error{
+    background-color: #E05C65 !important;
+}
+
+.noerror{
+    background-color: #bbb;
+}
+
+body{
+    background-color: #17B2EF;
+}
+
+.errorMsg{
+    color:red;
+    font-weight: bold;
+}
+
+.become-login {
+  color: #f0ad4e;
+  text-align: center;
+}
+
+.login-body{
+    height:100%;
+}
+
+.billing-form-wrap{
+    border-radius: 10px;
+    background-color: #fff;
+    width: 100%;
+    margin:0px;
+}
+
+.billinghead {
+    background-color: #23527c;
+    height:30px;
+    width:200px;
+    padding:10px;
+    color:white;
+    margin-left:10%;
+}
+
+.billingformwrap{
+    margin: 100px 6% 0px;
+}
+
+.login-form{
+    padding-top:10%;
+}
+
+#loginform .input-group{
+    padding: 0px 40px;
+    margin-top:20px;
+    height:50px;
+}
+
+.input-group input{
+    height:50px;
+    background-color:#eee;
+}
+
+.login-form button {
+  margin: 0 auto;
+  display: block;
+  color:black;
+  margin-top: 40px;
+  height: 45px;
+  width: 300px;
+  font-weight: bold;
+}
+
+.btn-signup{
+  background-color: #1E2264;
+  border: 2px solid #1E2264;
+}
+
+.signuptoday button{
+    color:#fff;
+}
+
+.signuptoday button:hover{
+    color:black;
+}
+
+.btn-signup:hover{
+    background-color: #fff;
+}
+
+.paddingtop40{
+    padding-top:40px;
+}
+
+.linkstwo input {
+    display: inline;
+}
+
+.linkstwo label{
+    color:#23527c;
+}
+
+.forgotyourpass a{
+    margin-left:20%;
+    color:#23527c;
+}

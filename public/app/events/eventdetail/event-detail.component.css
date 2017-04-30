@@ -1,0 +1,21 @@
+.evendetail{
+    padding-top:30px;
+}
+
+.buyticksbtn{
+    margin-top:20px;
+}
+
+.paymentbox{
+    margin: 30px 0px;
+    border: 1px solid white;
+    background-color: white;
+    height: 300px;
+    width:100%;
+}
+
+.paymentbox .radio{
+    margin: 30px 0px;
+    align-content: flex-start;
+    
+}

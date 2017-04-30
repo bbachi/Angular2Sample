@@ -34,7 +34,8 @@ export class EventsComponent implements OnInit {
 
     eventDetail(eventId: number): void {
         console.log('going to event detail page with the event id:::::' + eventId);
-        this.router.navigate(['/detail.htm']);
+        //var id = eventId.toString();
+        this.router.navigate(['/detail.htm',"7"]);
     }
 
     searchEventsInYourArea(searchTerm: HTMLInputElement): void {

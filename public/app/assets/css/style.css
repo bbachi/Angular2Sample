@@ -1413,3 +1413,10 @@ video {
    background-color: #e9bf03 !important;
    border-color: #e9bf03 !important;
 }
+
+#rcloading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

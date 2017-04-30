@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
     }
 
     logout(): void {
-        localStorage.setItem('currentUser', null);
+        localStorage.currentUser = null;
         this.userLoggedIn = !this.userLoggedIn;
         this.router.navigate(['home']);
     }

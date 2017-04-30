@@ -20,7 +20,7 @@ var HeaderComponent = (function () {
         this.userLoggedIn = false;
     }
     HeaderComponent.prototype.logout = function () {
-        localStorage.setItem('currentUser', null);
+        localStorage.currentUser = null;
         this.userLoggedIn = !this.userLoggedIn;
         this.router.navigate(['home']);
     };

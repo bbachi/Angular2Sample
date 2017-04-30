@@ -27,7 +27,7 @@ var CreateEventsComponent = (function () {
     }
     CreateEventsComponent.prototype.createAnEvent = function (formValues) {
         console.log(formValues);
-        if (!this.createEventForm.valid) {
+        if (this.createEventForm.valid) {
             this.isFormValid = false;
             var event_1 = new event_model_1.Event();
             event_1 = formValues;

@@ -15,11 +15,19 @@ var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
 var LoginComponent = (function () {
     function LoginComponent(userService, router) {
+        //private fb: FacebookService
+        //initialize facebook service
+        //let initParams: InitParams = {
+        //    appId: '421154054923859',
+        //    xfbml: true,
+        //    version: 'v2.8'
+        //};
         this.userService = userService;
         this.router = router;
         this.user = {};
         this.isUserValidated = true;
         this.eventchg = new core_1.EventEmitter();
+        //fb.init(initParams);
     }
     LoginComponent.prototype.login = function (formValues) {
         var _this = this;
@@ -44,6 +52,18 @@ var LoginComponent = (function () {
             this.isUserValidated = false;
             console.log('login form is invalid');
         }
+    };
+    LoginComponent.prototype.loginWithFaceBook = function (formValues) {
+        // login with options
+        var options = {
+            scope: 'public_profile,user_friends,email,pages_show_list',
+            return_scopes: true,
+            enable_profile_selector: true
+        };
+        // login without options
+        // this.fb.login()
+        // .then((response: LoginResponse) => console.log('Logged in', response))
+        // .catch(e => console.error('Error logging in'));
     };
     LoginComponent.prototype.forgotYourPassword = function (event) {
         event.preventDefault();
@@ -71,7 +91,7 @@ LoginComponent = __decorate([
     core_1.Component({
         selector: 'rc-login',
         templateUrl: 'app/user/login.component.html',
-        styleUrls: ['app/user/login.component.css']
+        styleUrls: ['app/user/login.component.css'],
     }),
     __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router])
 ], LoginComponent);

@@ -2,13 +2,17 @@
     background-color: #E05C65 !important;
 }
 
-.contactus h1{
+.contactus{
+    padding: 4% 4% 2% 27%; 
+}
+
+.contactus h2{
     text-align: center;
-    color: #ffffff;
+    color: #e9bf03;
     margin-bottom:3%;
 }
 
-.contactus label{
+.contactus label {
     color: #ffffff;
     padding-left:7%;
 }
@@ -17,4 +21,53 @@
     margin-top:1%;
     margin-bottom:2%;
     text-align: center;
+}
+
+.contactussubmitbtn button{
+    width:100px;
+    text-transform: uppercase;
+    color:black;
+    font-weight: bold;
+}
+
+.contactusbox{
+    border: 1px solid #ffffff;
+    border-color: #ffffff;
+    border-radius: 10px;
+    width: 70%;
+    background-color: white;
+}
+
+.contactusbox .input-group{
+    padding: 0px 40px;
+    margin-top:20px;
+    height:50px;
+}
+
+.input-group input{
+    height: 50px;
+    background-color: #eee;
+    border-radius: 5px;
+}
+
+.contactusbox textarea { 
+    margin-top: 30px;
+    height: 100px;
+    width: 92%;
+    margin-left: 4%;
+    margin-bottom: 20px;
+}
+
+.contactushead {
+    background-color: #23527c;
+    height: 30px;
+    width: 170px;
+    padding: 6px 10px;
+    color: white;
+    margin-left: 3%;
+    text-align: center;
+}
+
+.contactushead span{
+    margin-right:8px;
 }

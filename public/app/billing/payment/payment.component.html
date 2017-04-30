@@ -1,0 +1,55 @@
+<div class="container-fluid sitebgcolor">
+    
+    <div class="billingformwrap">
+        <div class="billinghead">
+            <span>PAYMENT PROCESSING</span>
+        </div>
+        <div class="billing-form-wrap">
+        <div class="billing-wrap">
+            <div class="row login-form">
+                <div class="col-md-6">
+                    <form [formGroup]="payment" id="loginform" autocomplete="off" (ngSubmit)="login(loginForm.value)" method="post" novalidate>
+                        <div class="input-group col-md-12">
+                            <input id="firstname" type="text" class="form-control" formControlName="firstName" name="firstName" placeholder="First Name">
+                        </div>
+                        <div class="input-group col-md-12">
+                            <input id="lastname" type="text" class="form-control" formControlName="lastName" name="lastName" placeholder="Last Name">
+                        </div>
+                        <div class="input-group col-md-12">
+                            <input id="password" type="text" class="form-control" formControlName="ccNumber" name="ccNumber" placeholder="Credit Card Number">
+                        </div>
+                        <div class="input-group">
+                            <div class="col-md-6">Payment Type: </div>
+                            <div class="col-md-6">
+                                <a href='https://payments.intuit.com/payments/landing_pages/LB/default.jsp?c=VMAD&l=H&s=1&b=FFFFFF'target='_blank'><img alt='Credit card logos' 
+                                title='Credit card logos' src='//payments.intuit.com/payments/landing_pages/LB/default.jsp?c=VMAD&l=H&s=1&b=FFFFFF'/></a>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="col-md-6">
+                                <label>Expiration Date:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input id="expmonth" type="text" class="form-control" formControlName="expiryMonth" name="expiryMonth" placeholder="">
+                                <input id="expyear" type="text" class="form-control" formControlName="expiryYear" name="expiryYear" placeholder="">
+                            </div>
+                        </div>
+                        <div class="input-group col-md-12">
+                            <input id="billingaddress" type="text" class="form-control" formControlName="billingAddress1" name="billingAddress1" placeholder="Billing Address Line1">
+                        </div>
+                         <div class="input-group col-md-12">
+                            <input id="city" type="text" class="form-control" formControlName="city" name="city" placeholder="City">
+                        </div>
+                         <div class="input-group col-md-12">
+                            <input id="zipcode" type="text" class="form-control" formControlName="billingZipcode" name="zipcode" placeholder="Zip Code">
+                        </div>
+                         <div class="input-group col-md-12">
+                            <input id="email" type="text" class="form-control" formControlName="email" name="email" placeholder="Email">
+                        </div>
+                    </form>
+                </div>  
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

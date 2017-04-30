@@ -12,6 +12,8 @@ export class ContactUsComponent implements OnInit {
 
     description: string;
     email: string;
+    phoneNumber: string;
+    name:string;
     contactUsForm: FormGroup;
     isFormValid: boolean = true;
     constructor(private router: Router, private emailService: EmailService ) {
@@ -41,9 +43,13 @@ export class ContactUsComponent implements OnInit {
     ngOnInit() {
         let email = new FormControl('', Validators.required);
         let description = new FormControl('', Validators.required);
+        let phoneNumber = new FormControl('', Validators.required);
+        let name = new FormControl('', Validators.required);
         this.contactUsForm = new FormGroup({
             email: email,
-            description: description
+            description: description,
+            phoneNumber:phoneNumber,
+            name:name
         });
     }
 

@@ -25,7 +25,7 @@ export class CreateEventsComponent implements OnInit {
 
     createAnEvent(formValues: any) {
         console.log(formValues);
-        if (!this.createEventForm.valid) {
+        if (this.createEventForm.valid) {
             this.isFormValid = false;
             let event: Event = new Event();
             event = <Event> formValues;

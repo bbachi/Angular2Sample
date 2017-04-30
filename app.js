@@ -55,7 +55,7 @@ raveCrateRouter.route('/signupUser').post(function(req,res) {
 });
 
 raveCrateRouter.route('/saveEvent').post(function(req,res) {
-    RestTemplate.post(RestUtil.urlBin.SaveEvent,RestUtil.request.saveEvent(req, rcsession.userId), rcsession.accessToken,function(response){
+    RestTemplate.post(RestUtil.urlBin.SaveEvent,RestUtil.request.saveEvent(req, rcsession.user.userId), rcsession.accessToken,function(response){
         res.json(RestUtil.response.saveEvent(JSON.parse(response)));
     })
 });
@@ -68,19 +68,19 @@ raveCrateRouter.route('/getEvents').post(function(req,res) {
 
 raveCrateRouter.route('/getEventDtls').post(function(req,res) {
     console.log(req.body.requestObj);
-    RestTemplate.post(RestUtil.urlBin.SaveUser,RestUtil.request.getEventDtls(req), rcsession.accessToken,function(response){
+    RestTemplate.post(RestUtil.urlBin.GetEventDetails,RestUtil.request.getEventDtls(req), rcsession.accessToken,function(response){
         res.json(RestUtil.response.getEventDtls(JSON.parse(response)));
     })
 });
 
 raveCrateRouter.route('/saveFreelancer').post(function(req,res) {
-    RestTemplate.post(RestUtil.urlBin.SaveFreelancer,RestUtil.request.saveFreelancer(req, rcsession.userId), rcsession.accessToken,function(response){
+    RestTemplate.post(RestUtil.urlBin.SaveFreelancer,RestUtil.request.saveFreelancer(req, rcsession.user.userId), rcsession.accessToken,function(response){
         res.json(RestUtil.response.saveFreelancer(JSON.parse(response)));
     })
 });
 
 raveCrateRouter.route('/resetpassword').post(function(req,res) {
-    RestTemplate.post(RestUtil.urlBin.ResetPasswordAndLogin,RestUtil.request.saveFreelancer(req, rcsession.userId), rcsession.accessToken,function(response){
+    RestTemplate.post(RestUtil.urlBin.ResetPasswordAndLogin,RestUtil.request.saveFreelancer(req, rcsession.user.userId), rcsession.accessToken,function(response){
         res.json(RestUtil.response.saveFreelancer(JSON.parse(response)));
     })
 });
@@ -90,6 +90,26 @@ raveCrateRouter.route('/gettxnidforpassword').post(function(req,res) {
         res.json(RestUtil.response.getTxnIdForPswrd(JSON.parse(response)));
     })
 });
+
+/* My profile resource calls start */
+raveCrateRouter.route('/getMyProfile').post(function(req,res) {
+    var userType = rcsession.user.type;
+    var url = '';
+    if(userType == 'U'){ url = RestUtil.urlBin.GetUserProfile; }
+    else if(userType == 'EH'){ url = RestUtil.urlBin.GetUserProfile; }
+    else if(userType == 'F'){ url = RestUtil.urlBin.GetFreelancerProfile; }
+    RestTemplate.post(url, RestUtil.request.myProfile(req,rcsession.user), rcsession.accessToken,function(response){
+        res.json(RestUtil.response.myProfile(JSON.parse(response),userType));
+    })
+});
+
+
+raveCrateRouter.route('/updateProfile').post(function(req,res) {
+    RestTemplate.post(RestUtil.urlBin.UpdateProfile, RestUtil.request.updateProfile(req,rcsession.user), rcsession.accessToken,function(response){
+        res.json(RestUtil.response.updateProfile(JSON.parse(response)));
+    })
+});
+/* My profile resource calls end */
 
 raveCrateRouter.route('/uploadEventImg').post(function(req,res){
     AWSS3.uploadImage(req.body.file, function(response){
@@ -116,9 +136,8 @@ app.listen(port, function(err) {
 function createUserInSession(req,resp) {
     var res = JSON.parse(resp);
     if(res.dataAvailable){
-        rcsession.email = req.body.email;
-        rcsession.userId = res.userId;
-        LOG.info('user validated:::creating session with user id:::::'+rcsession.userId);
+        rcsession.user = res.user;
+        LOG.info('user validated:::creating session with user id:::::'+JSON.stringify(rcsession.user));
     }else{
         LOG.info('user not validated:::session is not created for the:::'+req.body.email);
     }

@@ -1,0 +1,48 @@
+#myprofile {
+    padding:5% 10%;
+    background-color: #00adef;
+}
+
+.panel-default{
+    background-color: #08628e;
+    border-color: #417893;
+}
+
+.panel-body h3 {
+    color:#ec971f;
+    border-bottom: 1px solid #ec971f;
+    padding-bottom:15px;
+}
+
+.panel-body label {
+    color:#f1f1f1;
+    font-weight: normal;
+}
+
+#createEventForm {
+    padding:2% 6%;
+}
+
+#createEventForm button {
+    width: 200px;
+}
+
+.form-group div{
+    margin-bottom:10px;
+}
+
+.profilesec{
+    padding: 0px 12%;
+}
+
+.profilesec .well{
+    background-color: #032638;
+    color:#f1f1f1;
+    border-color: #032638;
+    border-radius: 5px;
+}
+
+.editbtn a{
+    text-decoration: none;
+    color: #e9bf03;
+}
